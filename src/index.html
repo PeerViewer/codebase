@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+
+  </head>
+  <body>
+    <h1>💖 Hello World!</h1>
+    <p>Welcome to your Electron application.</p>
+  <button onclick="runShellCommand()">Run Shell Command</button>
+  <script>
+      const { ipcRenderer } = require('electron');
+      //const { ipcRenderer } = window.require('electron');
+
+      function runShellCommand() {
+        ipcRenderer.send('run-command', 'zenity --info --text blaaa');
+        console.log("done");
+      }
+  </script>
+
+  </body>
+</html>
