@@ -1,8 +1,8 @@
 {
-  "name": "peerviewer",
-  "productName": "peerviewer",
+  "name": "PeerViewer",
+  "productName": "PeerViewer",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "The peer-to-peer, completely free alternative to TeamViewer.",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -28,11 +28,11 @@
     "@vercel/webpack-asset-relocator-loader": "^1.7.3",
     "css-loader": "^6.8.1",
     "electron": "27.1.2",
+    "electron-builder": "^24.9.1",
     "node-loader": "^2.0.0",
     "style-loader": "^3.3.3"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
-    "path-browserify": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.0"
   }
 }

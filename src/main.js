@@ -1,13 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-const { exec } = require('child_process');
-//const path = require('path');
+import { existsSync } from 'node:fs';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-/*
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
-*/
 
 const createWindow = () => {
   // Create the browser window.
@@ -50,11 +47,40 @@ app.on('activate', () => {
   }
 });
 
+// Depending on how the app is launched, the tigervnc passwd file might be in different locations.
+function findPasswdFile() {
+	//console.log(__dirname)
+	//console.log(process.cwd())
+	let defaultPath = 'tigervnc/passwd';
+	let passwdfile = '';
+	if (existsSync(defaultPath)) {
+		console.log("Found it on first attempt!");
+		passwdfile = defaultPath;
+	  } else {
+		console.log("Can't find file here, trying another option...");
+		// /tmp/.mount_peervizdlxvC/resources/app.asar/.webpack/main
+		// becomes
+		// /tmp/.mount_peervizdlxvC/resources
+		const parts = __dirname.split('/');
+		let prefix = parts.slice(0, -3).join('/');
+		passwdfile = prefix + "/" + defaultPath;
+		console.log("trying " + passwdfile);
+		if (!existsSync(passwdfile)) {
+			console.error("Could not find passwdfile!");
+		}
+	  }
+
+	console.log("findPasswdFile returns " + passwdfile);
+	return passwdfile;
+}
+
 // Listen for the 'run-node-code' message from the renderer process
 ipcMain.on('run-server', (event) => {
   const { exec } = require('child_process');
 
-  exec('x0tigervncserver -PasswordFile tigervnc/passwd', (error, stdout, stderr) => {
+  let passwdfile = findPasswdFile();
+
+  exec('x0tigervncserver -PasswordFile ' + passwdfile + ' ', (error, stdout, stderr) => {
     if (error) {
       console.error(`error: ${error.message}`);
       return;

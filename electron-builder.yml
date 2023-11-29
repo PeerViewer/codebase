@@ -1,0 +1,9 @@
+appId: "com.peerviewer.app"
+"extraResources": [
+      {
+        "from": "tigervnc",
+        "to": "tigervnc",
+        "filter": ["**/*"]
+      }
+    ]
+
