@@ -3,6 +3,7 @@
   "productName": "PeerViewer",
   "version": "1.0.0",
   "description": "The peer-to-peer, completely free alternative to TeamViewer.",
+  "homepage": "https://peerviewer.github.io/",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
