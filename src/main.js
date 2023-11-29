@@ -50,30 +50,23 @@ app.on('activate', () => {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
-
 // Listen for the 'run-node-code' message from the renderer process
-ipcMain.on('run-command', (event) => {
-	const { exec } = require('child_process');
+ipcMain.on('run-server', (event) => {
+  const { exec } = require('child_process');
 
-	exec('zenity --info --text bla', (error, stdout, stderr) => {
-	  if (error) {
-	    console.error(`error: ${error.message}`);
-	    return;
-	  }
+  exec('x0tigervncserver -PasswordFile tigervnc/passwd', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`error: ${error.message}`);
+      return;
+    }
 
-	  if (stderr) {
-	    console.error(`stderr: ${stderr}`);
-	    return;
-	  }
+    if (stderr) {
+      console.error(`stderr: ${stderr}`);
+      return;
+    }
 
-	  console.log(`stdout:\n${stdout}`);
-	});
+    console.log(`stdout:\n${stdout}`);
+  });
 
-	  // Execute your Node.js code here
-	  const result = 'Node.js code executed successfully!';
-	  
-	  // Send a response back to the renderer process
-	  event.reply('node-code-result', result);
+  event.reply('node-code-result', 'run-server result');
 });

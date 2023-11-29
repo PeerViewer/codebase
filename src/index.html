@@ -2,22 +2,22 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
-
+    <title>PeerViewer 1.0.0</title>
   </head>
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-  <button onclick="runShellCommand()">Run Shell Command</button>
-  <script>
-      const { ipcRenderer } = require('electron');
-      //const { ipcRenderer } = window.require('electron');
-
-      function runShellCommand() {
-        ipcRenderer.send('run-command', 'zenity --info --text blaaa');
-        console.log("done");
-      }
-  </script>
-
+    <h1>PeerViewer</h1>
+    <p>The peer-to-peer, completely free alternative to TeamViewer.</p>
+    <button onclick="runServer()">Run Server</button>
+    <script>
+        const { ipcRenderer } = require('electron');
+        function runServer() {
+          ipcRenderer.send('run-server');
+          console.log("run-server done");
+        }
+        // Listen for the response from the main process
+        ipcRenderer.on('node-code-result', (event, result) => {
+          console.log("got result:" + result);
+        });
+    </script>
   </body>
 </html>
