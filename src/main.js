@@ -73,28 +73,41 @@ function findResourceFile(filename) {
 	}
 }
 
-// Listen for the 'run-node-code' message from the renderer process
 ipcMain.on('run-server', (event) => {
-
-  if (process.platform !== 'linux') { // win32/darwin not supported
-    console.log('Only Linux platform is supported for now. Please reach out!');
-  } else {
-    const { exec } = require('child_process');
-    let serverBinary = findResourceFile('tigervnc-linux-x86_64/usr/bin/x0vncserver'); // default debian package has x0tigervncserver instead
-    let command = serverBinary + " -SecurityTypes None";
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`error: ${error.message}`);
-        return;
-      }
-
-      if (stderr) {
-        console.error(`stderr: ${stderr}`);
-        return;
-      }
-
-      console.log(`stdout:\n${stdout}`);
-    });
-  }
-  event.reply('node-code-result', 'run-server result');
+  // default debian package has x0tigervncserver instead
+  let result = runProcess('tigervnc-linux-x86_64/usr/bin/x0vncserver');
+  event.reply('run-server-result', 'running server result: ' + result);
 });
+
+ipcMain.on('run-client', (event) => {
+  // default debian package has xtigervncviewer instead
+  let result = runProcess('tigervnc-linux-x86_64/usr/bin/vncviewer');
+  event.reply('run-client-result', 'running client result: ' + result);
+});
+
+function runProcess(binaryName) {
+  if (process.platform !== 'linux') { // win32/darwin not supported
+    console.log('Unsupported platform ' + process.platform + '. Only linux is supported, win32/darwin not yet. Please reach out!');
+    return -1;
+  }
+
+  let foundBinary = findResourceFile(binaryName);
+  if (!foundBinary) {
+    console.log("Binary " + binaryName + " not found.");
+    return -2;
+  }
+
+  let command = foundBinary + " -SecurityTypes None";
+  console.log("Doing exec of: " + command);
+  const { exec } = require('child_process');
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`error: ${error.message}`);
+    }
+    if (stderr) {
+      console.error(`stderr: ${stderr}`);
+    }
+    console.log(`stdout:\n${stdout}`);
+  });
+  return 1;
+}
