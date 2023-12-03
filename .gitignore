@@ -93,3 +93,9 @@ out/
 
 # electron-builder
 dist/
+
+# npm
+package-lock.json
+
+# external resources
+vnc-software/tigervnc-linux-x86_64
