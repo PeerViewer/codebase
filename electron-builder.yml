@@ -2,8 +2,8 @@ appId: "com.peerviewer.app"
 linux: { "category": "Network" }
 "extraResources": [
       {
-        "from": "tigervnc",
-        "to": "tigervnc",
+        "from": "vnc-software",
+        "to": "vnc-software",
         "filter": ["**/*"]
       }
     ]

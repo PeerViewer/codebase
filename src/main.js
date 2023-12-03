@@ -47,52 +47,54 @@ app.on('activate', () => {
   }
 });
 
-// Depending on how the app is launched, the tigervnc passwd file might be in different locations.
-function findPasswdFile() {
-	//console.log(__dirname)
-	//console.log(process.cwd())
-	let defaultPath = 'tigervnc/passwd';
-	let passwdfile = '';
-	if (existsSync(defaultPath)) {
-		console.log("Found it on first attempt!");
-		passwdfile = defaultPath;
-	  } else {
-		console.log("Can't find file here, trying another option...");
-		// /tmp/.mount_peervizdlxvC/resources/app.asar/.webpack/main
-		// becomes
-		// /tmp/.mount_peervizdlxvC/resources
-		const parts = __dirname.split('/');
-		let prefix = parts.slice(0, -3).join('/');
-		passwdfile = prefix + "/" + defaultPath;
-		console.log("trying " + passwdfile);
-		if (!existsSync(passwdfile)) {
-			console.error("Could not find passwdfile!");
+// Depending on how the app is launched, the tigervnc folder might be in different locations.
+// Search order:
+// - relative tigervnc/tigervnc-1.13.1.x86_64/usr/bin/x0vncserver
+function findResourceFile(filename) {
+	console.log(__dirname)
+	console.log(process.cwd())
+	// /tmp/.mount_peervizdlxvC/resources/app.asar/.webpack/main
+	// becomes
+	// /tmp/.mount_peervizdlxvC/resources
+	const magicName = "vnc-software/";
+	const parts = __dirname.split('/');
+	let appImageMount = parts.slice(0, -3).join('/');
+	// placesToCheck are directories that should end with a slash
+	let placesToCheck = [magicName, appImageMount + "/" + magicName, "/"];
+	for (const str of placesToCheck) {
+		let fullName = str + filename;
+		console.log("checking exists: " + str);
+		if (existsSync(str)) {
+			console.log("exists: " + str);
+			return fullName;
+		} else {
+			console.log("no exists: " + str);
 		}
-	  }
-
-	console.log("findPasswdFile returns " + passwdfile);
-	return passwdfile;
+	}
 }
 
 // Listen for the 'run-node-code' message from the renderer process
 ipcMain.on('run-server', (event) => {
-  const { exec } = require('child_process');
 
-  let passwdfile = findPasswdFile();
+  if (process.platform !== 'linux') { // win32/darwin not supported
+    console.log('Only Linux platform is supported for now. Please reach out!');
+  } else {
+    const { exec } = require('child_process');
+    let serverBinary = findResourceFile('tigervnc-linux-x86_64/usr/bin/x0vncserver'); // default debian package has x0tigervncserver instead
+    let command = serverBinary + " -SecurityTypes None";
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`error: ${error.message}`);
+        return;
+      }
 
-  exec('x0tigervncserver -PasswordFile ' + passwdfile + ' ', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`error: ${error.message}`);
-      return;
-    }
+      if (stderr) {
+        console.error(`stderr: ${stderr}`);
+        return;
+      }
 
-    if (stderr) {
-      console.error(`stderr: ${stderr}`);
-      return;
-    }
-
-    console.log(`stdout:\n${stdout}`);
-  });
-
+      console.log(`stdout:\n${stdout}`);
+    });
+  }
   event.reply('node-code-result', 'run-server result');
 });
