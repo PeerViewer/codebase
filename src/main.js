@@ -122,9 +122,6 @@ function runProcess(binaryName, args) {
 }
 
 
-Add hypertele logic
-    
-
 // hypertele code:
 // ===============
 // This is an intential copy-paste of hypertele/server.js
