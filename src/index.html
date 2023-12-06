@@ -2,17 +2,35 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PeerViewer 1.0.0</title>
   </head>
   <body>
-    <h1>PeerViewer</h1>
-    <p>The peer-to-peer, completely free alternative to TeamViewer.</p>
-    <button onclick="runServer()">Run Server</button><br/>
-    <div id="pubkey">pubkey comes here</div><br>/
-    <br/>
-    <label for="connectto">Connect to:</label>
-    <input type="text" id="connectto" name="connectto"/><br/>
-    <button onclick="runClient()">Run Client</button>
+    <div class="container">
+        <header>
+           <h1>PeerViewer</h1>
+           <p>The peer-to-peer, free alternative to TeamViewer.</p>
+        </header>
+        <div class="main-content">
+            <div class="column" id="column1">
+                <h2>Allow Remote Control</h2>
+                <p>Content for column 1 goes here.</p>
+                <button onclick="runServer()">Run Server</button><br/>
+                <div id="pubkey">pubkey comes here</div><br>/
+                <br/>
+            </div>
+            <div class="column" id="column2">
+                <h2>Column 2</h2>
+                <p>Content for column 2 goes here.</p>
+                <label for="connectto">Connect to:</label>
+                <input type="text" id="connectto" name="connectto"/><br/>
+                <button onclick="runClient()">Run Client</button>
+            </div>
+        </div>
+        <footer>
+            <p>Footer</p>
+        </footer>
+    </div>
     <script>
         const { ipcRenderer } = require('electron');
         function runServer() {
