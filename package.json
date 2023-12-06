@@ -34,6 +34,10 @@
     "style-loader": "^3.3.3"
   },
   "dependencies": {
+    "hyperdht": "^6.11.0",
+    "@hyper-cmd/lib-net": "https://github.com/holepunchto/hyper-cmd-lib-net#v0.0.8",
+    "@hyper-cmd/lib-keys": "https://github.com/holepunchto/hyper-cmd-lib-keys#v0.0.2",
+    "@hyper-cmd/lib-utils": "https://github.com/holepunchto/hyper-cmd-lib-utils#v0.0.2",
     "electron-squirrel-startup": "^1.0.0"
   }
 }

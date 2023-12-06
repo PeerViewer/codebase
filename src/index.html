@@ -7,7 +7,11 @@
   <body>
     <h1>PeerViewer</h1>
     <p>The peer-to-peer, completely free alternative to TeamViewer.</p>
-    <button onclick="runServer()">Run Server</button>
+    <button onclick="runServer()">Run Server</button><br/>
+    <div id="pubkey">pubkey comes here</div><br>/
+    <br/>
+    <label for="connectto">Connect to:</label>
+    <input type="text" id="connectto" name="connectto"/><br/>
     <button onclick="runClient()">Run Client</button>
     <script>
         const { ipcRenderer } = require('electron');
@@ -16,7 +20,7 @@
           console.log("run-server done");
         }
         function runClient() {
-          ipcRenderer.send('run-client');
+          ipcRenderer.send('run-client', document.getElementById('connectto').value);
           console.log("run-client done");
         }
         // Listen for the response from the main process
@@ -25,6 +29,10 @@
         });
         ipcRenderer.on('run-server-result', (event, result) => {
           console.log("got result:" + result);
+        });
+        ipcRenderer.on('run-server-pubkey', (event, result) => {
+          console.log("run-server-pubkey: " + result);
+          document.getElementById("pubkey").innerHTML = result;
         });
     </script>
   </body>
