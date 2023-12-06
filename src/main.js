@@ -17,9 +17,13 @@ const createWindow = () => {
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      devTools: false // set to true to enable chrome developer tools
     },
   });
+
+  // app.dock.hide(); // Only works/necessary on mac?
+  mainWindow.setMenuBarVisibility(false); // Only Windows and Linux
 
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
