@@ -18,7 +18,7 @@ const createWindow = () => {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
       nodeIntegration: true,
       contextIsolation: false,
-      devTools: false // set to true to enable chrome developer tools
+      devTools: true // set to true to enable chrome developer tools
     },
   });
 
@@ -80,7 +80,7 @@ function findResourceFile(filename) {
 
 ipcMain.on('run-server', (event) => {
   let publicKeyHex = startHyperTeleServer();
-  event.reply('run-server-pubkey', 'publicKeyHex: ' + publicKeyHex);
+  event.reply('run-server-pubkey', publicKeyHex);
   // default debian package has x0tigervncserver instead
   let result = runProcess('tigervnc-linux-x86_64/usr/bin/x0vncserver', '-localhost=1 -interface=127.0.0.1 -rfbport 55900');
   event.reply('run-server-result', 'running server result: ' + result);

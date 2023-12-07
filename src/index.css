@@ -1,10 +1,11 @@
 body {
+    color: #424242;
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
 header, footer {
-    background-color: #333;
+    background-color: #0060a0;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -32,15 +33,32 @@ header, footer {
     background-color: #e6e6e6;
 }
 
+#pubkey {
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+#serverhelptext {
+    margin-bottom: 1em;
+    font-style: italic;
+}
+
+#serverstatus, #clientstatus {
+	background-color: #fff;
+	border: solid 1px;
+	padding-left: 1em;
+}
+
 .bluebutton {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4CAFFF;
-    color: #fff; /* White text */
+    background-color: #44aaff;
+    color: #fff;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
     border: none;
     border-radius: 4px;
+    margin: 1em 0;
 }

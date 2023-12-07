@@ -16,17 +16,26 @@
                 <h2>Allow Remote Control</h2>
                 <button class="bluebutton" onclick="runServer()">Run Server</button>
 		<p id="youridlabel">YOUR ID:</p>
-                <div id="pubkey">Please wait, server starting up...</div>
+                <div id="pubkey"></div>
+		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
+		<div id="serverstatus">
+			<p>Initializing...</p>
+		</div>
             </div>
             <div class="column" id="column2">
                 <h2>Control Remote Computer</h2>
+		<p>
                 <label for="connectto">Partner ID:</label>
-                <input type="text" id="connectto" name="connectto"/><br/>
+                <input type="text" id="connectto" name="connectto"/>
+		</p>
                 <button class="bluebutton" onclick="runClient()">CONNECT</button>
+		<div id="clientstatus">
+			<p>Ready to connect.</p>
+		</div>
             </div>
         </div>
         <footer>
-            <p>Footer</p>
+            <p>PeerViewer © 2023 - powered by HolePunch</p>
         </footer>
     </div>
     <script>
