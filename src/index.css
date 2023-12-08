@@ -11,6 +11,22 @@ header, footer {
     padding: 10px;
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+header .logo {
+    font-size: xx-large;
+    display: inline;
+}
+
+header h1 {
+    display: inline;
+}
+
 .main-content {
     display: flex;
     flex-wrap: wrap;
@@ -20,9 +36,10 @@ header, footer {
 
 .column {
     flex: 1;
-    padding: 20px;
+    padding: 1em;
     box-sizing: border-box;
     border: 1px solid #ddd;
+    position: relative;
 }
 
 #column1 {
@@ -47,6 +64,13 @@ header, footer {
 	background-color: #fff;
 	border: solid 1px;
 	padding-left: 1em;
+}
+
+#clientstatus {
+	position: absolute;
+	bottom: 1em;
+	right: 1em;
+	left: 1em;
 }
 
 .bluebutton {
