@@ -12,15 +12,15 @@
            <h1>PeerViewer</h1>
            <p>The free peer-to-peer TeamViewer solution.</p>
         </header>
-        <div class="main-content">
-            <div class="column menu">
-                <div class="menuitem"><button onclick="menuChange(1)">Remote</button></div>
-                <div class="menuitem"><button onclick="menuChange(2)">More Features</button></div>
-                <div class="menuitem"><button onclick="menuChange(3)">Live Support</button></div>
-                <div class="menuitem"><button onclick="menuChange(4)">Contact</button></div>
-                <div class="menuitem"><button onclick="menuChange(5)">Donate</button></div>
-                <div class="menuitem"><button onclick="menuChange(6)">About</button></div>
-            </div>
+        <div class="menu">
+            <div class="menuitem"><button onclick="menuChange(0)">Remote</button></div>
+            <div class="menuitem"><button onclick="menuChange(1)">More Features</button></div>
+            <div class="menuitem"><button onclick="menuChange(2)">Live Support</button></div>
+            <div class="menuitem"><button onclick="menuChange(3)">Contact</button></div>
+            <div class="menuitem"><button onclick="menuChange(4)">Donate</button></div>
+            <div class="menuitem"><button onclick="menuChange(5)">About</button></div>
+        </div>
+        <div class="main-content" id="content0">
             <div class="column" id="column1">
                 <h2>Allow Remote Control</h2>
                 <!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
@@ -39,6 +39,21 @@
 		<div id="clientstatus">Ready to connect.</div>
             </div>
         </div>
+        <div class="main-content" id="content1">
+		<h2>More Features</h2>
+	</div>
+        <div class="main-content" id="content2">
+		<h2>Live Support</h2>
+	</div>
+        <div class="main-content" id="content3">
+		<h2>Contact</h2>
+	</div>
+        <div class="main-content" id="content4">
+		<h2>Donate</h2>
+	</div>
+        <div class="main-content" id="content5">
+		<h2>About</h2>
+	</div>
         <footer>
             <p>PeerViewer © 2023 - powered by HolePunch</p>
         </footer>
@@ -55,6 +70,12 @@
         }
 	function menuChange(itemnr) {
 	  console.log("changing menu " + itemnr);
+          for (let i=0;i<6;i++) {
+            let tohide = document.getElementById("content" + i)
+            if (tohide) tohide.style.display = "none";
+          }
+          let toshow = document.getElementById("content" + itemnr)
+          if (toshow) toshow.style.display = "flex";
 	}
         // Listen for the response from the main process
         ipcRenderer.on('run-client-result', (event, result) => {

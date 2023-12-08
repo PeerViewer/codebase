@@ -28,10 +28,14 @@ header h1 {
 }
 
 .main-content {
-    display: flex;
+    display: none; /* by default, main-content is not visible until enable by the javascript menu - except content0 (see below) */
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: stretch;
+    height: 21em;
+}
+#content0 {
+    display: flex; /* content0 is the first menu item and visible by default */
 }
 
 .column {
@@ -44,12 +48,14 @@ header h1 {
 
 .menu {
     background-color: #e6e6e6;
-    flex: 1;
-    padding: 0.5em;
+    float: left;
+    height: 21em;
+    width: 11em;
 }
 
 .menuitem {
     padding: 0.2em;
+    margin: 0.4em;
 }
 
 .menuitem button {
@@ -67,7 +73,7 @@ header h1 {
 }
 
 .menuitem button:hover {
-  background-color: #04AA6D; /* Green */
+  background-color: #04AA6d;
   color: white;
 }
 
