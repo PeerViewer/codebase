@@ -13,6 +13,14 @@
            <p>The free peer-to-peer TeamViewer solution.</p>
         </header>
         <div class="main-content">
+            <div class="column menu">
+                <div class="menuitem"><button onclick="menuChange(1)">Remote</button></div>
+                <div class="menuitem"><button onclick="menuChange(2)">More Features</button></div>
+                <div class="menuitem"><button onclick="menuChange(3)">Live Support</button></div>
+                <div class="menuitem"><button onclick="menuChange(4)">Contact</button></div>
+                <div class="menuitem"><button onclick="menuChange(5)">Donate</button></div>
+                <div class="menuitem"><button onclick="menuChange(6)">About</button></div>
+            </div>
             <div class="column" id="column1">
                 <h2>Allow Remote Control</h2>
                 <!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
@@ -45,6 +53,9 @@
           ipcRenderer.send('run-client', document.getElementById('connectto').value);
           console.log("run-client done");
         }
+	function menuChange(itemnr) {
+	  console.log("changing menu " + itemnr);
+	}
         // Listen for the response from the main process
         ipcRenderer.on('run-client-result', (event, result) => {
           console.log("got result:" + result);

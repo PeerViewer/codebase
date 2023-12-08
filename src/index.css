@@ -42,12 +42,38 @@ header h1 {
     position: relative;
 }
 
-#column1 {
-    background-color: #f2f2f2;
+.menu {
+    background-color: #e6e6e6;
+    flex: 1;
+    padding: 0.5em;
 }
 
-#column2 {
-    background-color: #e6e6e6;
+.menuitem {
+    padding: 0.2em;
+}
+
+.menuitem button {
+    background-color: #44aaff;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-align: left;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.menuitem button:hover {
+  background-color: #04AA6D; /* Green */
+  color: white;
+}
+
+#column1, #column2 {
+    background-color: #f2f2f2;
+    flex: 3;
 }
 
 #pubkey {
@@ -64,9 +90,6 @@ header h1 {
 	background-color: #fff;
 	border: solid 1px;
 	padding: 1em;
-}
-
-#clientstatus {
 	position: absolute;
 	bottom: 1em;
 	right: 1em;
