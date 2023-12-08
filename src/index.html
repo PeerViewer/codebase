@@ -15,7 +15,7 @@
         <div class="main-content">
             <div class="column" id="column1">
                 <h2>Allow Remote Control</h2>
-                <button class="bluebutton" onclick="runServer()">Run Server</button>
+                <!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
 		<p id="youridlabel">YOUR ID:</p>
                 <div id="pubkey"></div>
 		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
@@ -60,6 +60,8 @@
           console.log("run-server-pubkey: " + result);
           document.getElementById("pubkey").innerHTML = result;
         });
+	// run server automatically
+	runServer();
     </script>
   </body>
 </html>
