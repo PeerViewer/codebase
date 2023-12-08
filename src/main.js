@@ -4,6 +4,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 import { existsSync } from 'node:fs';
 
+let serverChild;
+let clientChild;
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -41,6 +44,9 @@ app.on('ready', createWindow);
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
+  console.log("App window closing, performing close actions...");
+  if (serverChild) stopChild(serverChild);
+  if (clientChild) stopChild(clientChild);
   if (process.platform !== 'darwin') {
     app.quit();
   }
@@ -53,6 +59,18 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+function stopChild(child) {
+  console.log("Stopping child process:");
+  console.log(child);
+  console.log("Destroying stdout and stderr...");
+  if (serverChild.stdout) serverChild.stdout.destroy();
+  if (serverChild.stderr) serverChild.stderr.destroy();
+  console.log("Sending SIGINT and SIGKILL...");
+  serverChild.kill('SIGINT');
+  serverChild.kill('SIGKILL');
+  console.log("child terminated");
+}
 
 // Depending on how the app is launched, the tigervnc folder might be in different locations.
 // Search order:
@@ -86,21 +104,19 @@ ipcMain.on('run-server', (event) => {
 
   event.reply('run-server-log', "Preparing for incoming connections...");
   // default debian package has x0tigervncserver instead
-  let result = runProcess('tigervnc-linux-x86_64/usr/bin/x0vncserver', '-localhost=1 -interface=127.0.0.1 -rfbport 55900');
-  event.reply('run-server-result', 'running server result: ' + result);
+  serverChild = runProcess('tigervnc-linux-x86_64/usr/bin/x0vncserver', ['SecurityTypes=None','-localhost=1','-interface=127.0.0.1','-rfbport=55900']);
   event.reply('run-server-log', "Ready for incoming connections.");
 });
 
 ipcMain.on('run-client', (event, data) => {
-  event.reply('run-server-log', "Initializing network layer...");
+  event.reply('run-client-log', "Initializing network layer...");
   console.log("running client with connectto data: " + data);
   startHyperTeleClient(data);
   event.reply('run-client-log', "Network layer initialized.");
 
-  event.reply('run-server-log', "Establishing outgoing connection...");
+  event.reply('run-client-log', "Establishing outgoing connection...");
   // default debian package has xtigervncviewer instead
-  let result = runProcess('tigervnc-linux-x86_64/usr/bin/vncviewer', '127.0.0.1::45900');
-  event.reply('run-client-result', 'running client result: ' + result);
+  clientChild = runProcess('tigervnc-linux-x86_64/usr/bin/vncviewer', ['SecurityTypes=None','127.0.0.1::45900']);
   event.reply('run-client-log', "Outgoing connection established.");
 });
 
@@ -116,19 +132,9 @@ function runProcess(binaryName, args) {
     return -2;
   }
 
-  let command = foundBinary + " -SecurityTypes None" + " " + args;
-  console.log("Doing exec of: " + command);
-  const { exec } = require('child_process');
-  exec(command, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`error: ${error.message}`);
-    }
-    if (stderr) {
-      console.error(`stderr: ${stderr}`);
-    }
-    console.log(`stdout:\n${stdout}`);
-  });
-  return 1;
+  const { spawn } = require('child_process');
+  const child = spawn(foundBinary, args);
+  return child;
 }
 
 
