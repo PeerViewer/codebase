@@ -79,19 +79,29 @@ function findResourceFile(filename) {
 }
 
 ipcMain.on('run-server', (event) => {
+  event.reply('run-server-log', "Initializing network layer...");
   let publicKeyHex = startHyperTeleServer();
+  event.reply('run-server-log', "Network layer initialized.");
   event.reply('run-server-pubkey', publicKeyHex);
+
+  event.reply('run-server-log', "Preparing for incoming connections...");
   // default debian package has x0tigervncserver instead
   let result = runProcess('tigervnc-linux-x86_64/usr/bin/x0vncserver', '-localhost=1 -interface=127.0.0.1 -rfbport 55900');
   event.reply('run-server-result', 'running server result: ' + result);
+  event.reply('run-server-log', "Ready for incoming connections.");
 });
 
 ipcMain.on('run-client', (event, data) => {
+  event.reply('run-server-log', "Initializing network layer...");
   console.log("running client with connectto data: " + data);
   startHyperTeleClient(data);
+  event.reply('run-client-log', "Network layer initialized.");
+
+  event.reply('run-server-log', "Establishing outgoing connection...");
   // default debian package has xtigervncviewer instead
   let result = runProcess('tigervnc-linux-x86_64/usr/bin/vncviewer', '127.0.0.1::45900');
   event.reply('run-client-result', 'running client result: ' + result);
+  event.reply('run-client-log', "Outgoing connection established.");
 });
 
 function runProcess(binaryName, args) {

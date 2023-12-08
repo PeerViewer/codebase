@@ -63,7 +63,7 @@ header h1 {
 #serverstatus, #clientstatus {
 	background-color: #fff;
 	border: solid 1px;
-	padding-left: 1em;
+	padding: 1em;
 }
 
 #clientstatus {

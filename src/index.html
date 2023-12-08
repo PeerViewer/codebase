@@ -19,9 +19,7 @@
 		<p id="youridlabel">YOUR ID:</p>
                 <div id="pubkey"></div>
 		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
-		<div id="serverstatus">
-			<p>Initializing...</p>
-		</div>
+		<div id="serverstatus">Initializing...</div>
             </div>
             <div class="column" id="column2">
                 <h2>Control Remote Computer</h2>
@@ -30,9 +28,7 @@
                 <input type="text" id="connectto" name="connectto"/>
 		</p>
                 <button class="bluebutton" onclick="runClient()">CONNECT</button>
-		<div id="clientstatus">
-			<p>Ready to connect.</p>
-		</div>
+		<div id="clientstatus">Ready to connect.</div>
             </div>
         </div>
         <footer>
@@ -60,6 +56,15 @@
           console.log("run-server-pubkey: " + result);
           document.getElementById("pubkey").innerHTML = result;
         });
+	ipcRenderer.on('run-server-log', (event, result) => {
+          console.log("run-server-log: " + result);
+          document.getElementById("serverstatus").innerHTML = result;
+        });
+	ipcRenderer.on('run-client-log', (event, result) => {
+          console.log("run-client-log: " + result);
+          document.getElementById("clientstatus").innerHTML = result;
+        });
+
 	// run server automatically
 	runServer();
     </script>
