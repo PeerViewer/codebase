@@ -31,7 +31,8 @@
     "electron": "27.1.2",
     "electron-builder": "^24.9.1",
     "node-loader": "^2.0.0",
-    "style-loader": "^3.3.3"
+    "style-loader": "^3.3.3",
+    "webpack-obfuscator": "^3.5.1"
   },
   "dependencies": {
     "hyperdht": "^6.11.0",
