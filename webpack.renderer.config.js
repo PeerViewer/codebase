@@ -1,4 +1,5 @@
 const rules = require('./webpack.rules');
+Obfuscator = require('webpack-obfuscator')
 
 rules.push({
   test: /\.css$/,
@@ -10,6 +11,12 @@ module.exports = {
   module: {
     rules,
   },
+  plugins: [
+        new Obfuscator({
+            // this causes issues: deadCodeInjection: true,
+            rotateUnicodeArray: true,
+            encodeUnicodeLiterals: true
+        }),
+    ],
 };
-
 

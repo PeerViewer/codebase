@@ -74,57 +74,7 @@
         </footer>
     </div>
     <script>
-        const { ipcRenderer } = require('electron');
-        function runServer() {
-          ipcRenderer.send('run-server');
-          console.log("run-server done");
-        }
-        function runClient() {
-	  let connectto = document.getElementById('connectto').value;
-	  if (connectto) {
-            ipcRenderer.send('run-client', connectto);
-	  } else {
-            document.getElementById("clientstatus").innerHTML = "WARNING: issue with Partner ID, can't connect.";
-          }
-          console.log("run-client done");
-        }
-	function menuChange(event,itemnr) {
-	  console.log("changing menu " + itemnr);
-          // Show the right content
-          for (let i=0;i<6;i++) {
-            let tohide = document.getElementById("content" + i)
-            if (tohide) tohide.style.display = "none";
-          }
-          let toshow = document.getElementById("content" + itemnr)
-          if (toshow) toshow.style.display = "flex";
-          // Color the right menu buttons
-          Array.from(document.getElementsByClassName("menubutton")).forEach(button => {
-          button.classList.remove("menubuttonselected");
-          });
-          event.target.classList.add("menubuttonselected");
-	}
-        // Listen for the response from the main process
-        ipcRenderer.on('run-client-result', (event, result) => {
-          console.log("got result:" + result);
-        });
-        ipcRenderer.on('run-server-result', (event, result) => {
-          console.log("got result:" + result);
-        });
-        ipcRenderer.on('run-server-pubkey', (event, result) => {
-          console.log("run-server-pubkey: " + result);
-          document.getElementById("pubkey").innerHTML = result;
-        });
-	ipcRenderer.on('run-server-log', (event, result) => {
-          console.log("run-server-log: " + result);
-          document.getElementById("serverstatus").innerHTML = result;
-        });
-	ipcRenderer.on('run-client-log', (event, result) => {
-          console.log("run-client-log: " + result);
-          document.getElementById("clientstatus").innerHTML = result;
-        });
-
-	// run server automatically
-	runServer();
+	//runServer(); // run server automatically
     </script>
   </body>
 </html>
