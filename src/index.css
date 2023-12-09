@@ -76,10 +76,16 @@ header h1 {
     width: 100%;
 }
 
-.menuitem button:hover {
-  background-color: #04AA6d;
+.menubutton:hover {
+  background-color: #0060a0;
   color: white;
 }
+
+/* this needs 2 classes, otherwise the .menubutton:hover above will win */
+.menubutton.menubuttonselected {
+  background-color: #0400b0;
+}
+
 
 #column1, #column2 {
     background-color: #f2f2f2;
@@ -118,4 +124,8 @@ header h1 {
     border: none;
     border-radius: 4px;
     margin: 1em 0;
+}
+
+.bluebutton:hover {
+  background-color: #0060a0;
 }

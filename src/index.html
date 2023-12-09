@@ -13,12 +13,12 @@
            <p>The free peer-to-peer TeamViewer solution.</p>
         </header>
         <div class="menu">
-            <div class="menuitem"><button onclick="menuChange(0)">Remote</button></div>
-            <div class="menuitem"><button onclick="menuChange(1)">More Features</button></div>
-            <div class="menuitem"><button onclick="menuChange(2)">Live Support</button></div>
-            <div class="menuitem"><button onclick="menuChange(3)">Contact</button></div>
-            <div class="menuitem"><button onclick="menuChange(4)">Donate</button></div>
-            <div class="menuitem"><button onclick="menuChange(5)">About</button></div>
+            <div class="menuitem"><button class="menubutton menubuttonselected" onclick="menuChange(event,0)">Remote</button></div>
+            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,1)">More Features</button></div>
+            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,2)">Live Support</button></div>
+            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,3)">Contact</button></div>
+            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,4)">Donate</button></div>
+            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,5)">About</button></div>
         </div>
         <div class="main-content" id="content0">
             <div class="column" id="column1">
@@ -88,14 +88,20 @@
           }
           console.log("run-client done");
         }
-	function menuChange(itemnr) {
+	function menuChange(event,itemnr) {
 	  console.log("changing menu " + itemnr);
+          // Show the right content
           for (let i=0;i<6;i++) {
             let tohide = document.getElementById("content" + i)
             if (tohide) tohide.style.display = "none";
           }
           let toshow = document.getElementById("content" + itemnr)
           if (toshow) toshow.style.display = "flex";
+          // Color the right menu buttons
+          Array.from(document.getElementsByClassName("menubutton")).forEach(button => {
+          button.classList.remove("menubuttonselected");
+          });
+          event.target.classList.add("menubuttonselected");
 	}
         // Listen for the response from the main process
         ipcRenderer.on('run-client-result', (event, result) => {
