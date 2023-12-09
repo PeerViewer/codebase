@@ -46,6 +46,10 @@ header h1 {
     position: relative;
 }
 
+.onecolumn {
+    padding: 1em;
+}
+
 .menu {
     background-color: #e6e6e6;
     float: left;
