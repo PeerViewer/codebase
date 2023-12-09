@@ -62,7 +62,7 @@ app.on('activate', () => {
 
 function stopChild(child) {
   console.log("Stopping child process:");
-  console.log(child);
+  //console.log(child);
   console.log("Destroying stdout and stderr...");
   if (serverChild.stdout) serverChild.stdout.destroy();
   if (serverChild.stderr) serverChild.stderr.destroy();
