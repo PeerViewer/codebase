@@ -3,7 +3,7 @@
 
 const { ipcRenderer } = require('electron');
 
-console.log("running preload");
+console.log("running preload - this happens at every page load, including external websites");
 //console.log(window);
 
 // Listen for the response from the main process
@@ -57,4 +57,5 @@ window.runClient = function runClient() {
   console.log("run-client done");
 }
 
-runServer(); // run server automatically at startup
+// Don't run server here because then it might get started multiple times, once for every page load, including externals:
+//runServer(); // run server automatically at startup

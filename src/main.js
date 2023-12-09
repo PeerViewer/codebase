@@ -5,6 +5,7 @@
 // - use random free listening TCP ports instead of hard-coded 45900 and 55900 to allow simultaneous sessions
 // - do some kind of "pkill vnc-software/tigervnc-linux-x86_64/usr/bin/x0vncserver -rfbport=55900" to ensure none other is still running
 // - do some kind of "pkill vnc-software/tigervnc-linux-x86_64/usr/bin/vncviewer SecurityTypes=None 127.0.0.1::45900" to ensure none other is still running
+// - before starting a new client or server process, check if serverChild or clientChild are initialized and if yes, stop them
 
 const { app, BrowserWindow, ipcMain } = require('electron');
 import { existsSync } from 'node:fs';
