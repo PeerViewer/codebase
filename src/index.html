@@ -80,7 +80,12 @@
           console.log("run-server done");
         }
         function runClient() {
-          ipcRenderer.send('run-client', document.getElementById('connectto').value);
+	  let connectto = document.getElementById('connectto').value;
+	  if (connectto) {
+            ipcRenderer.send('run-client', connectto);
+	  } else {
+            document.getElementById("clientstatus").innerHTML = "WARNING: issue with Partner ID, can't connect.";
+          }
           console.log("run-client done");
         }
 	function menuChange(itemnr) {
