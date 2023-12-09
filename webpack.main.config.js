@@ -13,7 +13,8 @@ module.exports = {
   plugins: [
 	new Obfuscator({
             deadCodeInjection: true,
-            rotateUnicodeArray: true
+            rotateUnicodeArray: true,
+            encodeUnicodeLiterals: true
         }),
     ],
 };
