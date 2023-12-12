@@ -1,10 +1,15 @@
 const rules = require('./webpack.rules');
 Obfuscator = require('webpack-obfuscator')
 
-rules.push({
-  test: /\.css$/,
-  use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
-});
+rules.push(
+    ...[
+	{ test: /\.(html)$/, use: ["html-loader"] },
+	{
+	  test: /\.css$/,
+	  use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+        },
+    ]
+);
 
 module.exports = {
   // Put your normal webpack config below here
