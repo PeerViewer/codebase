@@ -1,4 +1,5 @@
 body {
+    background: #f2f2f2;
     color: #424242;
     margin: 0;
     font-family: Arial, sans-serif;
@@ -88,7 +89,6 @@ header h1 {
 
 
 #column1, #column2 {
-    background-color: #f2f2f2;
     flex: 3;
 }
 
@@ -128,4 +128,20 @@ header h1 {
 
 .bluebutton:hover {
   background-color: #0060a0;
+}
+
+.feature {
+    background: #44aaff;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    width: 20em;
+}
+
+.feature:hover {
+  background-color: #0060a0;
+}
+
+.feature img {
+    width: 80%;
 }
