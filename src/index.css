@@ -132,16 +132,22 @@ header h1 {
 
 .feature {
     background: #44aaff;
+    border-radius: 10px;
     color: #fff;
     padding: 1em;
     text-align: center;
-    width: 20em;
+    width: 12em;
 }
 
 .feature:hover {
   background-color: #0060a0;
+  box-shadow: 0 0 60px #44aaff;
 }
 
 .feature img {
     width: 80%;
+}
+
+.feature h3 {
+    margin-block: 0;
 }
