@@ -63,13 +63,14 @@ window.blowUpFeature = function blowUpFeature(featureId) {
 
 window.populateFeatureGallery = function populateFeatureGallery() {
   const features = [["Windows Support", "If you'd like to remote control Windows machines, or use a Windows machine for control, you need this!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ73NXX438JJCDQW26S"],
-                    ["MacOS Support", "If you'd like to remote control MacOS machines, or use an Apple for control, you need this!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ76R6GYMKVUC3WQLMU"]];
+                    ["MacOS Support", "If you'd like to remote control MacOS machines, or use an Apple for control, you need this!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ76R6GYMKVUC3WQLMU"],
+                    ["Open-Source Code", "Should we open up the source code? Show how much you REALLY want it!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7EJXDFFKSAC3TS7PU"],
+                    ["Lightning Wallet", "If we integrate a Bitcoin Lightning wallet, you would be able to 'stream' satoshis (for example: pay or get paid per minute) to provide remote support or to share your computer. This opens up exciting possibilities!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7C6G0P58S3C2C2P4Q"],
+                    ["View-Only Mode", "A View-Only mode might be nice to be able to share your desktop, without having the other party control it.", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7CFKDFUXXSGUDGTFU"]];
   let featuresHTML = "";
   for (let featurenr=0; featurenr<features.length; featurenr++) {
     featuresHTML += '<div class="feature" id="feature' + featurenr + '"><h3>' + features[featurenr][0] + '</h3><p>' + features[featurenr][1] + '</p><a href="lightning:' + features[featurenr][2] + '"><img src="./images/' + features[featurenr][2] + '.png" alt="yes"/></a></div>';
   }
-  console.log("got featuregallery:");
-  console.log(document.getElementById("featuregallery"));
   document.getElementById("featuregallery").innerHTML = featuresHTML;
 }
 
