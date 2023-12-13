@@ -134,6 +134,8 @@ header h1 {
     background: #44aaff;
     border-radius: 10px;
     color: #fff;
+    float: left;
+    margin: 1em;
     padding: 1em;
     text-align: center;
     width: 12em;
@@ -150,4 +152,11 @@ header h1 {
 
 .feature h3 {
     margin-block: 0;
+}
+
+.holepunchlogo {
+    position: relative;
+    width: 6em;
+    top: 0.3em;
+    left: 0.3em;
 }

@@ -27,10 +27,10 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.1.0",
     "@electron-forge/plugin-webpack": "^7.1.0",
     "@vercel/webpack-asset-relocator-loader": "^1.7.3",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "electron": "27.1.2",
     "electron-builder": "^24.9.1",
-    "html-loader": "^4.2.0",
     "node-loader": "^2.0.0",
     "style-loader": "^3.3.3",
     "webpack-obfuscator": "^3.5.1"

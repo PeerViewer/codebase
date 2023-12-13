@@ -1,9 +1,9 @@
 const rules = require('./webpack.rules');
 Obfuscator = require('webpack-obfuscator')
+const CopyPlugin = require("copy-webpack-plugin");
 
 rules.push(
     ...[
-	{ test: /\.(html)$/, use: ["html-loader"] },
 	{
 	  test: /\.css$/,
 	  use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
@@ -12,16 +12,22 @@ rules.push(
 );
 
 module.exports = {
-  // Put your normal webpack config below here
   module: {
     rules,
   },
   plugins: [
+	new CopyPlugin({
+	      patterns: [
+		{ from: "src/images/", to: "images/" },
+	      ],
+	}),
+	/* Disabled because it creates non-deterministic issues:
         new Obfuscator({
             // this causes issues: deadCodeInjection: true,
-            rotateUnicodeArray: true,
-            encodeUnicodeLiterals: true
+            // causes \x20 in strings: rotateUnicodeArray: true,
+            // causes \x20 in strings: encodeUnicodeLiterals: true
         }),
+	*/
     ],
 };
 
