@@ -15,7 +15,7 @@
         <div class="menu">
             <div class="menuitem"><button class="menubutton menubuttonselected" onclick="menuChange(event,0)">Remote</button></div>
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,1)">More Features</button></div>
-            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,2)">Live Support</button></div>
+            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,2)">Create Support Ticket</button></div>
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,3)">Contact</button></div>
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,4)">Donate</button></div>
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,5)">About</button></div>
@@ -50,10 +50,13 @@
             </div>
 	</div>
         <div class="main-content" id="content2">
-		<h2>Create Support Ticket</h2>
+		<!-- 1500 - 200 (menu) - 100 (margin) = 1200, 800 - 100 (header) - 100 (footer) = 600 BUT we need 700 for the lnbits contact form -->
+		<iframe width="1200" height="600" src="https://legend.lnbits.com/lnticket/ejBSMY2x8XfNUqPHtmoCmc" title="Create Support Ticket using lnbits"></iframe>
+		<!-- <a href="https://legend.lnbits.com/lnticket/ejBSMY2x8XfNUqPHtmoCmc">Open Form</a> -->
 	</div>
         <div class="main-content" id="content3">
-		<h2>Contact</h2>
+		<!-- 605 height is needed to avoid scroll bars -->
+		 <iframe width="1200" height="610" src="https://legend.lnbits.com/tipjar/1114" title="Tip Jar for Contact"></iframe>
 	</div>
         <div class="main-content" id="content4">
 		<h2>Donate</h2>

@@ -38,7 +38,19 @@ const createWindow = () => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+//  mainWindow.webContents.openDevTools();
+
+  const { session } = require('electron')
+  session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+    callback({
+      responseHeaders: {
+        ...details.responseHeaders,
+        //'Content-Security-Policy': ['default-src \'none\'']
+        'Content-Security-Policy': ["default-src 'self' 'unsafe-inline' data:; script-src 'self' 'unsafe-eval' 'unsafe-inline' data:; frame-src 'self' https://legend.lnbits.com"]
+      }
+    })
+  });
+
 };
 
 // This method will be called when Electron has finished
