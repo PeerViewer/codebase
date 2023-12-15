@@ -15,7 +15,7 @@
         <div class="menu">
             <div class="menuitem"><button class="menubutton menubuttonselected" onclick="menuChange(event,0)">Remote</button></div>
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,1)">More Features</button></div>
-            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,2)">Create Support Ticket</button></div>
+            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,2)">Support Ticket</button></div>
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,3)">Contact</button></div>
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,4)">Donate</button></div>
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,5)">About</button></div>
@@ -42,12 +42,12 @@
         <div class="main-content" id="content1">
 	    <div class="onecolumn">
 	        <p>We'd love to know which feature to focus on next. What would you like to see?</p>
-		<p>And how much do you want that feature? Now you can vote... with your Bitcoin Lightning wallet!</p>
-                <p>Just send some satoshis towards the feature(s) you want - the more, the merrier - and we'll use that budget to implement it.</p>
+		<p>And how much do you want that feature? Now you can vote... with your wallet!</p>
+                <p>Just scan the QR code of the feature(s) you want with a Bitcoin Lightning wallet and send however much you like.</p>
 		<div id="featuregallery">
 		<!-- This gets filled up by JavaScript. -->
 		</div>
-		<button class="bluebutton" onClick="menuChange(event,3)">Or request a feature through the contact form!</button>
+		<button class="bluebutton" onClick="menuChange(event,3)">Feel free to request a different feature using the contact form</button>
             </div>
 	</div>
         <div class="main-content" id="content2">
@@ -60,7 +60,13 @@
 		 <iframe width="1200" height="610" src="https://legend.lnbits.com/tipjar/1114" title="Tip Jar for Contact"></iframe>
 	</div>
         <div class="main-content" id="content4">
+	     <div class="onecolumn">
 		<h2>Donate</h2>
+		<p>Writing and maintaining quality software is not cheap.</p>
+		<p>We are aiming to keep this project well-maintained, bug-free, and reliable long-term.</p>
+		<p>Therefore, your generous donations are always appreciated. Thank you!</p>
+		<img src="./images/LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7DN8GUE4WCGS0D0DN.png" class="donationqr"/>
+	    </div>
 	</div>
         <div class="main-content" id="content5">
 	     <div class="onecolumn">
@@ -76,6 +82,16 @@
 			<li>Being low cost, making it possible to survive on a pay-what-you-can/voluntary/donation basis.</li>
 			<li>Minimizing time-to-market and allowing for quick MVP's without a lot of server-side datacenter setup work.</li>
 		</ul>
+		<h3>Building blocks</h3>
+		<p>We're lucky to be standing on the shoulders of giants to pull this off.</p>
+		<p>Here's a list of some key, free and open-source technologies that make this possible:</p>
+		<ul>
+			<li>HolePunch, for establishing direct peer-to-peer connections.</li>
+			<li>LNBits, for quickly building reusable payment QR codes using the LNURLp standard.</li>
+			<li>Electron, for building standalone applications using open web standards.</li>
+			<li>Bitcoin and Lightning, for accepting payments without needing anyone's permission or approval.</li>
+		</ul>
+		<button class="bluebutton" onClick="menuChange(event,3)">If you like this project, or have suggestions, let us know!</button>
 	    </div>
 	</div>
         <footer>

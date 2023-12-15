@@ -55,12 +55,12 @@ header h1 {
     background-color: #e6e6e6;
     float: left;
     height: 21em;
-    width: 11em;
+    width: 10em;
 }
 
 .menuitem {
-    padding: 0.2em;
-    margin: 0.4em;
+    padding: 0.1em;
+    margin: 0.1em;
 }
 
 .menuitem button {
@@ -157,6 +157,7 @@ header h1 {
 
 .feature h3 {
     margin-block: 0;
+    height: 1.5em;
 }
 
 #content1 .bluebutton {
@@ -168,4 +169,8 @@ header h1 {
     width: 6em;
     top: 0.3em;
     left: 0.3em;
+}
+
+.donationqr {
+    width: 50%;
 }
