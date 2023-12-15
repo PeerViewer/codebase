@@ -134,7 +134,8 @@ header h1 {
     background: #44aaff;
     border-radius: 10px;
     color: #fff;
-    float: left;
+    display: inline-grid;
+    height: 22em;
     margin: 0.3em;
     padding: 0.6em;
     text-align: center;
@@ -142,8 +143,12 @@ header h1 {
 }
 
 .feature:hover {
-  background-color: #0060a0;
-  box-shadow: 0 0 60px #44aaff;
+    background-color: #0060a0;
+    box-shadow: 0 0 60px #44aaff;
+}
+
+.feature p {
+    height: 5em;
 }
 
 .feature img {
@@ -152,6 +157,10 @@ header h1 {
 
 .feature h3 {
     margin-block: 0;
+}
+
+#content1 .bluebutton {
+    font-size: 1.2em;
 }
 
 .holepunchlogo {
