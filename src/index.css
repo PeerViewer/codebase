@@ -17,6 +17,11 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 0;
+}
+
+footer p {
+    margin: 0 0 0.5em 0;
 }
 
 header .logo {
@@ -135,7 +140,7 @@ header h1 {
     border-radius: 10px;
     color: #fff;
     display: inline-grid;
-    height: 22em;
+    height: 20em;
     margin: 0.3em;
     padding: 0.6em;
     text-align: center;
@@ -157,7 +162,7 @@ header h1 {
 
 .feature h3 {
     margin-block: 0;
-    height: 1.5em;
+    height: 2em;
 }
 
 #content1 .bluebutton {
@@ -173,4 +178,8 @@ header h1 {
 
 .donationqr {
     width: 50%;
+}
+
+.contactticketform {
+    border:none;
 }
