@@ -102,6 +102,21 @@
         </footer>
     </div>
     <script>
+    function adaptForWeb() {
+      // TODO
+    }
+    function startup() {
+      populateFeatureGallery();
+      try {
+        const process = require('node:process');
+        console.log(process.platform);
+        runServer(); // run server automatically at startup
+      } catch (e) {
+         console.log('Caught error in require of node:process:');
+         console.log(e);
+         adaptForWeb();
+      }
+    }
     function menuChange(event,itemnr) {
       console.log("changing menu " + itemnr);
       // Show the right content
@@ -130,9 +145,7 @@
       }
       document.getElementById("featuregallery").innerHTML = featuresHTML;
     }
-
-    populateFeatureGallery();
-    runServer(); // run server automatically at startup
+    startup();
     </script>
   </body>
 </html>
