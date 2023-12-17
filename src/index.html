@@ -23,12 +23,13 @@
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,5)">About</button></div>
         </div>
         <div class="main-content" id="content0">
+            <button class="bluebutton downloadbutton" onclick="download()">Download PeerViewer to get started</button>
             <div class="column" id="column1">
                 <h2>Allow Remote Control</h2>
-                <!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
 		<p id="youridlabel">YOUR ID:</p>
                 <div id="pubkey"></div>
 		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
+		<!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
 		<div id="serverstatus">Initializing...</div>
             </div>
             <div class="column" id="column2">
@@ -37,7 +38,7 @@
                 <label for="connectto">Partner ID:</label>
                 <input type="text" id="connectto" name="connectto"/>
 		</p>
-                <button class="bluebutton" onclick="runClient()">CONNECT</button>
+                <button class="bluebutton connectbutton" onclick="runClient()">CONNECT</button>
 		<div id="clientstatus">Ready to connect.</div>
             </div>
         </div>
@@ -103,7 +104,9 @@
     </div>
     <script>
     function adaptForWeb() {
-      // TODO
+      Array.from(document.getElementsByClassName("downloadbutton")).forEach(button => {
+        button.style.display = "block";
+      });
     }
     function startup() {
       populateFeatureGallery();
@@ -128,7 +131,7 @@
       if (toshow) toshow.style.display = "flex";
       // Color the right menu buttons
       Array.from(document.getElementsByClassName("menubutton")).forEach(button => {
-      button.classList.remove("menubuttonselected");
+        button.classList.remove("menubuttonselected");
       });
       event.target.classList.add("menubuttonselected");
     }

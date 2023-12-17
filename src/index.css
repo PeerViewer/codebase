@@ -183,3 +183,20 @@ header h1 {
 .contactticketform {
     border:none;
 }
+
+.bluebutton.downloadbutton {
+    bottom: 3em;
+    border-radius: 35px;
+    display: none;
+    font-size: 32px;
+    font-weight: bold;
+    height: 4em;
+    position: absolute;
+    top: 6em;
+    width: 50%;
+    z-index: 1;
+}
+.bluebutton.downloadbutton:hover {
+    background-color: #0060a0;
+    box-shadow: 0 0 60px #44aaff;
+}
