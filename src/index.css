@@ -184,17 +184,25 @@ header h1 {
     border:none;
 }
 
-.bluebutton.downloadbutton {
-    bottom: 3em;
-    border-radius: 35px;
+.coverremotecontrol {
     display: none;
+    z-index: 1;
+    width: 100%;
+    position: absolute;
+    height: 40%;
+    background-color: #333333b3;
+    left: 10em;
+}
+
+.bluebutton.downloadbutton {
+    border-radius: 35px;
     font-size: 32px;
     font-weight: bold;
     height: 4em;
-    position: absolute;
-    top: 6em;
-    width: 50%;
-    z-index: 1;
+    left: 10%;
+    top: 20%;
+    width: 70%;
+    position: relative;
 }
 .bluebutton.downloadbutton:hover {
     background-color: #0060a0;

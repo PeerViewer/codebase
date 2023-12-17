@@ -23,7 +23,9 @@
             <div class="menuitem"><button class="menubutton" onclick="menuChange(event,5)">About</button></div>
         </div>
         <div class="main-content" id="content0">
-            <button class="bluebutton downloadbutton" onclick="download()">Download PeerViewer to get started</button>
+            <div class="coverremotecontrol">
+                <button class="bluebutton downloadbutton" onclick="download()">Download PeerViewer to get started</button>
+            </div>
             <div class="column" id="column1">
                 <h2>Allow Remote Control</h2>
 		<p id="youridlabel">YOUR ID:</p>
@@ -104,7 +106,7 @@
     </div>
     <script>
     function adaptForWeb() {
-      Array.from(document.getElementsByClassName("downloadbutton")).forEach(button => {
+      Array.from(document.getElementsByClassName("coverremotecontrol")).forEach(button => {
         button.style.display = "block";
       });
     }
