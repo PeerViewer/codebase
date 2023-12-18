@@ -11,6 +11,7 @@ const { app, BrowserWindow, ipcMain, shell } = require('electron');
 import { existsSync } from 'node:fs';
 
 let serverChild;
+let publicKeyHex;
 let clientChild;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -121,14 +122,16 @@ function findResourceFile(filename) {
 }
 
 ipcMain.on('run-server', (event) => {
-  event.reply('run-server-log', "Initializing network layer...");
-  let publicKeyHex = startHyperTeleServer();
-  event.reply('run-server-log', "Network layer initialized.");
-  event.reply('run-server-pubkey', publicKeyHex);
+  if (!serverChild) { // Only run the server if not started already. It keeps running the whole time.
+    event.reply('run-server-log', "Initializing network layer...");
+    publicKeyHex = startHyperTeleServer();
+    event.reply('run-server-log', "Network layer initialized.");
 
-  event.reply('run-server-log', "Preparing for incoming connections...");
-  // default debian package has x0tigervncserver instead
-  serverChild = runProcess('tigervnc-linux-x86_64/usr/bin/x0vncserver', ['SecurityTypes=None','-localhost=1','-interface=127.0.0.1','-rfbport=55900']);
+    event.reply('run-server-log', "Preparing for incoming connections...");
+    // default debian package has x0tigervncserver instead
+    serverChild = runProcess('tigervnc-linux-x86_64/usr/bin/x0vncserver', ['SecurityTypes=None','-localhost=1','-interface=127.0.0.1','-rfbport=55900']);
+  }
+  event.reply('run-server-pubkey', publicKeyHex);
   event.reply('run-server-log', "Ready for incoming connections.");
 });
 
