@@ -7,7 +7,7 @@
 // - do some kind of "pkill vnc-software/tigervnc-linux-x86_64/usr/bin/vncviewer SecurityTypes=None 127.0.0.1::45900" to ensure none other is still running
 // - before starting a new client or server process, check if serverChild or clientChild are initialized and if yes, stop them
 
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, shell } = require('electron');
 import { existsSync } from 'node:fs';
 
 let serverChild;
@@ -38,17 +38,23 @@ const createWindow = () => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-//  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
+  // Allow iframe'ing lnbits
   const { session } = require('electron')
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     callback({
       responseHeaders: {
         ...details.responseHeaders,
-        //'Content-Security-Policy': ['default-src \'none\'']
         'Content-Security-Policy': ["default-src 'self' 'unsafe-inline' data:; script-src 'self' 'unsafe-eval' 'unsafe-inline' data:; frame-src 'self' https://legend.lnbits.com"]
       }
     })
+  });
+
+  // Open target="_blank" links in external browser window
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    shell.openExternal(url);
+    return { action: 'deny' };
   });
 
 };
