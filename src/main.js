@@ -125,6 +125,8 @@ ipcMain.on('run-server', (event) => {
   if (!serverChild) { // Only run the server if not started already. It keeps running the whole time.
     event.reply('run-server-log', "Initializing network layer...");
     publicKeyServer = startHyperTeleServer();
+    // Padding is not needed
+    publicKeyServer = publicKeyServer.replace('=','');
     event.reply('run-server-log', "Network layer initialized.");
 
     event.reply('run-server-log', "Preparing for incoming connections...");
