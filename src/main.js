@@ -140,12 +140,19 @@ ipcMain.on('run-server', (event) => {
 ipcMain.on('run-client', (event, data) => {
   event.reply('run-client-log', "Initializing network layer...");
   console.log("running client with connectto data: " + data);
-  startHyperTeleClient(data);
+  let hyperTeleProxy = startHyperTeleClient(data);
   event.reply('run-client-log', "Network layer initialized.");
 
   event.reply('run-client-log', "Establishing outgoing connection...");
   // default debian package has xtigervncviewer instead
-  clientChild = runProcess('tigervnc-linux-x86_64/usr/bin/vncviewer', ['SecurityTypes=None','127.0.0.1::45900']);
+  let clientChild = runProcess('tigervnc-linux-x86_64/usr/bin/vncviewer', ['SecurityTypes=None','127.0.0.1::45900']);
+  // Stop the hyperTeleProxy from listening when the client is closed, because the next run might use a different client
+  clientChild.on('close', (code) => {
+    console.log(`child process exited with code ${code}, closing hyperTeleProxy...`);
+    // the hyperdht is stopped by the proxy.on('close' handler
+    hyperTeleProxy.close();
+    clientChild = null;
+  });
   event.reply('run-client-log', "Outgoing connection established.");
 });
 
@@ -373,6 +380,13 @@ process.once('SIGINT', () => {
     process.exit()
   })
 })
+
+proxy.on('close', () => { // or 'end'
+    console.log('proxy.on close triggered, clonnection closed, destroying dht...');
+    dht.destroy();
+});
+
+return proxy;
 
 }
 
