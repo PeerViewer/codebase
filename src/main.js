@@ -141,11 +141,19 @@ ipcMain.on('run-client', (event, data) => {
   event.reply('run-client-log', "Initializing network layer...");
   console.log("running client with connectto data: " + data);
   let hyperTeleProxy = startHyperTeleClient(data);
+  if (!hyperTeleProxy) {
+    event.reply('run-client-log', "Network layer initialization failed. Invalid partner ID provided?");
+    return;
+  }
   event.reply('run-client-log', "Network layer initialized.");
 
   event.reply('run-client-log', "Establishing outgoing connection...");
   // default debian package has xtigervncviewer instead
   let clientChild = runProcess('tigervnc-linux-x86_64/usr/bin/vncviewer', ['SecurityTypes=None','127.0.0.1::45900']);
+  if (!clientChild) {
+    event.reply('run-client-log', "Outgoing connection using vncviewer failed.");
+    return;
+  }
   // Stop the hyperTeleProxy from listening when the client is closed, because the next run might use a different client
   clientChild.on('close', (code) => {
     console.log(`child process exited with code ${code}, closing hyperTeleProxy...`);
@@ -287,11 +295,27 @@ return keyPair.publicKey.toString('base64');
 }
 
 
-function startHyperTeleClient(pubkeyhex) {
+function startHyperTeleClient(pubkeybase64) {
 
-let pubkeybuff = new Buffer(pubkeyhex, 'base64');
+console.log("Starting hypertele with pubkeybase64: " + pubkeybase64);
+let pubkeyhex = ""
 
-argv.s = pubkeybuff.toString('hex');
+try {
+  let pubkeybuff = new Buffer(pubkeybase64, 'base64');
+  console.log("got buff: "); console.log(pubkeybuff);
+  pubkeyhex = pubkeybuff.toString('hex');
+  if (pubkeyhex.length != 64) {
+    console.log("Pubkey invalid length - it should be 32 bytes. Returning...");
+    return;
+  }
+  console.log("Starting hypertele with pubkeyhex: " + pubkeyhex);
+} catch (e) {
+  console.log("caught error during decode of base64 pubkey");
+  console.log(e);
+  return;
+}
+
+argv.s = pubkeyhex;
 argv.p = "45900";
 
 const helpMsg = 'Usage:\nhypertele -p port_listen -u unix_socket ?-c conf.json ?-i identity.json ?-s peer_key'
