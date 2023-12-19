@@ -24,6 +24,14 @@ footer p {
     margin: 0 0 0.5em 0;
 }
 
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
 header .logo {
     font-size: xx-large;
     display: inline;
