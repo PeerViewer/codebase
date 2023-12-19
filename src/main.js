@@ -298,22 +298,21 @@ return keyPair.publicKey.toString('base64');
 function startHyperTeleClient(pubkeybase64) {
 
 console.log("Starting hypertele with pubkeybase64: " + pubkeybase64);
-let pubkeyhex = ""
 
+let pubkeyhex = ""
 try {
-  let pubkeybuff = new Buffer(pubkeybase64, 'base64');
-  console.log("got buff: "); console.log(pubkeybuff);
-  pubkeyhex = pubkeybuff.toString('hex');
+  pubkeyhex = new Buffer(pubkeybase64, 'base64').toString('hex');
   if (pubkeyhex.length != 64) {
     console.log("Pubkey invalid length - it should be 32 bytes. Returning...");
     return;
   }
-  console.log("Starting hypertele with pubkeyhex: " + pubkeyhex);
 } catch (e) {
   console.log("caught error during decode of base64 pubkey");
   console.log(e);
   return;
 }
+
+console.log("Starting hypertele with pubkeyhex: " + pubkeyhex);
 
 argv.s = pubkeyhex;
 argv.p = "45900";
