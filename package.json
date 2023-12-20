@@ -1,8 +1,8 @@
 {
   "name": "PeerViewer",
   "productName": "PeerViewer",
-  "version": "1.0.1",
-  "description": "The peer-to-peer, completely free alternative to TeamViewer.",
+  "version": "1.0.2",
+  "description": "The peer-to-peer alternative to TeamViewer that's completely free for unlimited personal and commercial use.",
   "homepage": "https://peerviewer.github.io/",
   "main": ".webpack/main",
   "scripts": {
