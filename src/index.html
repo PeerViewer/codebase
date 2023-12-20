@@ -30,7 +30,7 @@
                 <h2>Allow Remote Control</h2>
                 <label for="pubkey">YOUR ID:</label>
                 <input type="text" name="pubkey" id="pubkey" disabled size="43">
-                <a href="#copy" onclick="javascript:copyYourId();"><img src="images/copy-icon.png" class="copyicon"></a>
+                <a href="#copy" onclick="javascript:copyYourId();"><img width="26" src="images/copy-icon.png" class="copyicon"></a>
 		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
 		<!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
 		<div id="serverstatus">Initializing...</div>
@@ -39,7 +39,7 @@
                 <h2>Control Remote Computer</h2>
 		<p>
                 <label for="connectto">Partner ID:</label>
-                <input type="text" id="connectto" name="connectto" size="43"/>
+                <input type="text" id="connectto" name="connectto" size="43" onKeyPress="javascript:checkSubmit(event)"/>
 		</p>
                 <button class="bluebutton connectbutton" onclick="runClient()">CONNECT</button>
 		<div id="clientstatus">Ready to connect.</div>
@@ -159,6 +159,12 @@
       navigator.clipboard.writeText(yourIdInput.value);
       document.getElementById("serverstatus").innerHTML = "Copy successful. You can paste your ID in a message to your partner.";
       console.log("Copied your ID: " + yourIdInput.value);
+    }
+    function checkSubmit(e) {
+      if (e && e.keyCode == 13) {
+        console.log("Return pressed on partner ID field, connecting...");
+        runClient();
+      }
     }
     startup();
     </script>

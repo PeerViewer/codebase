@@ -220,7 +220,7 @@ header h1 {
 
 .copyicon {
     transition: all 0.2s linear;
-    width: 1.7em;
+    /* width: 1.7em; this is set in the html to avoid a flash of huge logo */
     position: relative;
     top: 0.5em;
     left: 0.3em;
