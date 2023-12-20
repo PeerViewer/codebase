@@ -123,11 +123,13 @@
         const process = require('node:process');
         console.log(process.platform);
         runServer(); // run server automatically at startup
+	/*
         const electronVersion = process.versions.electron;
         console.log("electronVersion = " + electronVersion);
-        const appVersion = process.env.npm_package_version;
+        const appVersion = process.env.npm_package_version; // This only works when running with npm start, not in an AppImage release :/
         console.log("appVersion = " + appVersion);
         document.getElementById('peerviewerversion').innerHTML = "version " + appVersion;
+	*/
       } catch (e) {
          console.log('Caught error in require of node:process:');
          console.log(e);
