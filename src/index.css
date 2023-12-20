@@ -5,14 +5,18 @@ body {
     font-family: Arial, sans-serif;
 }
 
-header, footer {
+header {
+    background-color: #0060a0;
+    color: #fff;
+    text-align: left;
+    padding: 0.4em 1em 0.2em 10em;
+}
+
+footer {
     background-color: #0060a0;
     color: #fff;
     text-align: center;
     padding: 10px;
-}
-
-footer {
     position: absolute;
     bottom: 0;
     left: 0;
