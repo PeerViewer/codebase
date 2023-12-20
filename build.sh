@@ -13,7 +13,7 @@ export DEBUG=electron-builder
 ./node_modules/.bin/electron-builder -l appimage
 
 # build more:
-#./node_modules/.bin/electron-builder -l appimage zip deb snap
+#./node_modules/.bin/electron-builder -l appimage zip deb snap rpm
 
 # NOTE: Don't use prepackage because the electron-builder will not add the tigervnc/ folder:
 #./node_modules/.bin/electron-builder --prepackaged  out/peerviewer-linux-x64/ -l appimage
