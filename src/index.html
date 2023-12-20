@@ -29,7 +29,8 @@
             <div class="column" id="column1">
                 <h2>Allow Remote Control</h2>
                 <label for="pubkey">YOUR ID:</label>
-                <input type="text" name="pubkey" id="pubkey" disabled size="42">
+                <input type="text" name="pubkey" id="pubkey" disabled size="43">
+                <a href="#copy" onclick="javascript:copyYourId();"><img src="images/copy-icon.png" class="copyicon"></a>
 		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
 		<!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
 		<div id="serverstatus">Initializing...</div>
@@ -38,7 +39,7 @@
                 <h2>Control Remote Computer</h2>
 		<p>
                 <label for="connectto">Partner ID:</label>
-                <input type="text" id="connectto" name="connectto" size="42"/>
+                <input type="text" id="connectto" name="connectto" size="43"/>
 		</p>
                 <button class="bluebutton connectbutton" onclick="runClient()">CONNECT</button>
 		<div id="clientstatus">Ready to connect.</div>
@@ -149,6 +150,15 @@
         featuresHTML += '<div class="feature" id="feature' + featurenr + '"><h3>' + features[featurenr][0] + '</h3><p>' + features[featurenr][1] + '</p><a href="lightning:' + features[featurenr][2] + '"><img src="./images/' + features[featurenr][2] + '.png" alt="yes"/></a></div>';
       }
       document.getElementById("featuregallery").innerHTML = featuresHTML;
+    }
+
+    function copyYourId() {
+      let yourIdInput = document.getElementById("pubkey");
+      yourIdInput.select();
+      yourIdInput.setSelectionRange(0, 99999); // For mobile devices
+      navigator.clipboard.writeText(yourIdInput.value);
+      document.getElementById("serverstatus").innerHTML = "Copy successful. You can paste your ID in a message to your partner.";
+      console.log("Copied your ID: " + yourIdInput.value);
     }
     startup();
     </script>
