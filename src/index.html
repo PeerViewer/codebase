@@ -12,7 +12,7 @@
         <header>
 	   <p class="logo">⇔</p>
            <h1>PeerViewer</h1>
-           <p>The free peer-to-peer TeamViewer solution.</p>
+           <p>The peer-to-peer alternative to TeamViewer that's completely free for unlimited personal and commercial use.</p>
         </header>
         <div class="menu">
             <div class="menuitem"><button class="menubutton menubuttonselected" onclick="menuChange(event,0)">Remote</button></div>
@@ -30,7 +30,7 @@
                 <h2>Allow Remote Control</h2>
                 <label for="pubkey">YOUR ID:</label>
                 <input type="text" name="pubkey" id="pubkey" disabled size="43">
-                <a href="#copy" onclick="javascript:copyYourId();"><img width="26" src="images/copy-icon.png" class="copyicon"></a>
+                <a href="#copy" onclick="javascript:copyYourId();"><img width="26" src="../images/copy-icon.png" class="copyicon"></a>
 		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
 		<!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
 		<div id="serverstatus">Initializing...</div>
@@ -72,14 +72,20 @@
 		<p>Therefore, your generous donations are always appreciated.</p>
                 <p>Just scan the QR code with a Bitcoin Lightning wallet and send however much you like.</p>
 		<p>Thank you!</p>
-		<a href="lightning:LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7DN8GUE4WCGS0D0DN"><img src="./images/LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7DN8GUE4WCGS0D0DN.png" class="donationqr"/></a>
+		<a href="lightning:LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7DN8GUE4WCGS0D0DN"><img src="../images/LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7DN8GUE4WCGS0D0DN.png" class="donationqr"/></a>
 	    </div>
 	</div>
         <div class="main-content" id="content5">
 	     <div class="onecolumn">
-		<p>PeerViewer <span id="peerviewerversion"></span> is a free for unlimited use TeamViewer solution.</p>
+		<p>PeerViewer <span id="peerviewerversion"></span> is a remote desktop solution like TeamViewer that's completely free for unlimited personal and commercial use.</p>
 		<p>Under the hood, it uses direct (peer-to-peer) connections between the participants.</p>
 		<p>This was recently made possible by the advanced holepunching techniques, made by the <a href="https://holepunch.to" target="_blank">HolePunch</a> company.</p>
+		<!--
+		<h3>Why build an alternative to TeamViewer?</h3>
+		<p>TeamViewer works well and is very popular as a remote desktop and support program, but it's not free for commercial use.<p>
+		<p>Users report frequent disconnections, possibly due to TeamViewer monitoring the sessions and terminating them if they violate the terms of service.</p>
+		<p>We can do better.</p>
+		-->
 		<h3>Why peer-to-peer?</h3>
 		<p>Traditionally, when you use network apps such as TeamViewer, place audio and video calls or share files, your data is going through intermediate servers which are expensive to host, can harm your privacy, increase latency and consume additional bandwidth.</p>
 		<p>Peer-to-peer solutions such as PeerViewer have the advantage of:
@@ -102,7 +108,7 @@
 	    </div>
 	</div>
         <footer>
-            <p><a href="https://peerviewer.org" target="_blank">PeerViewer</a> © 2023 - powered by <a href="https://holepunch.to/" target="_blank"><img class="holepunchlogo" src="./images/holepunch-logo.svg"></a></p>
+            <p><a href="https://peerviewer.org" target="_blank">PeerViewer</a> © 2023 - powered by <a href="https://holepunch.to/" target="_blank"><img class="holepunchlogo" src="../images/holepunch-logo.svg"></a></p>
         </footer>
     </div>
     <script>
@@ -152,7 +158,7 @@
                         ["View-Only Mode", "A View-Only mode might be nice to be able to share your desktop, without having the other party control it.", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7CFKDFUXXSGUDGTFU"]];
       let featuresHTML = "";
       for (let featurenr=0; featurenr<features.length; featurenr++) {
-        featuresHTML += '<div class="feature" id="feature' + featurenr + '"><h3>' + features[featurenr][0] + '</h3><p>' + features[featurenr][1] + '</p><a href="lightning:' + features[featurenr][2] + '"><img src="./images/' + features[featurenr][2] + '.png" alt="yes"/></a></div>';
+        featuresHTML += '<div class="feature" id="feature' + featurenr + '"><h3>' + features[featurenr][0] + '</h3><p>' + features[featurenr][1] + '</p><a href="lightning:' + features[featurenr][2] + '"><img src="../images/' + features[featurenr][2] + '.png" alt="yes"/></a></div>';
       }
       document.getElementById("featuregallery").innerHTML = featuresHTML;
     }
