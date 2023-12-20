@@ -1,5 +1,6 @@
 # PeerViewer codebase
-PeerViewer codebase for the free peer-to-peer TeamViewer solution.
+
+PeerViewer is a remote desktop and support solution, completely free for unlimited personal and commercial use.
 
 Under the hood, it uses direct (peer-to-peer) connections between the participants.
 
