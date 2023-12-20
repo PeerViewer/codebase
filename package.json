@@ -2,7 +2,7 @@
   "name": "PeerViewer",
   "productName": "PeerViewer",
   "version": "1.0.2",
-  "description": "The peer-to-peer alternative to TeamViewer that's completely free for unlimited personal and commercial use.",
+  "description": "Peer-to-peer remote desktop and support solution. Like TeamViewer but completely free for unlimited personal and commercial use!",
   "homepage": "https://peerviewer.github.io/",
   "main": ".webpack/main",
   "scripts": {
