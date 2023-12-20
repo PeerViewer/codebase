@@ -15,7 +15,7 @@ ipcRenderer.on('run-server-result', (event, result) => {
 });
 ipcRenderer.on('run-server-pubkey', (event, result) => {
   console.log("run-server-pubkey: " + result);
-  document.getElementById("pubkey").innerHTML = result;
+  document.getElementById("pubkey").value = result;
 });
 ipcRenderer.on('run-server-log', (event, result) => {
   console.log("run-server-log: " + result);

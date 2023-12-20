@@ -28,8 +28,8 @@
             </div>
             <div class="column" id="column1">
                 <h2>Allow Remote Control</h2>
-		<p id="youridlabel">YOUR ID:</p>
-                <div id="pubkey"></div>
+                <label for="pubkey">YOUR ID:</label>
+                <input type="text" name="pubkey" id="pubkey" disabled size="42">
 		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
 		<!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
 		<div id="serverstatus">Initializing...</div>
@@ -38,7 +38,7 @@
                 <h2>Control Remote Computer</h2>
 		<p>
                 <label for="connectto">Partner ID:</label>
-                <input type="text" id="connectto" name="connectto"/>
+                <input type="text" id="connectto" name="connectto" size="42"/>
 		</p>
                 <button class="bluebutton connectbutton" onclick="runClient()">CONNECT</button>
 		<div id="clientstatus">Ready to connect.</div>

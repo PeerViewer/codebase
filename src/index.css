@@ -108,6 +108,7 @@ header h1 {
 #pubkey {
     margin-bottom: 1em;
     font-weight: bold;
+    font-size: 18px;
 }
 
 #serverhelptext {
