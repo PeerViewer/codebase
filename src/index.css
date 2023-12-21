@@ -221,6 +221,9 @@ header h1 {
     background-color: #0060a0;
     box-shadow: 0 0 60px #44aaff;
 }
+.downloadbutton div {
+    padding-top: 1.4em;
+}
 
 .copyicon {
     transition: all 0.2s linear;
