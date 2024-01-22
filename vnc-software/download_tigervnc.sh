@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Execute with containing directory as current working directory
+mydir=$(readlink -f "$0")
+mydir=$(dirname "$mydir")
+cd "$mydir"
+
 # Download link obtained from https://sourceforge.net/projects/tigervnc/
 outfile=tigervnc-latest-stable.tar.gz
 
@@ -8,3 +13,6 @@ tar xf "$outfile" && \
 rm -rf tigervnc-linux-x86_64 && \
 mv tigervnc-1.13.1.x86_64 tigervnc-linux-x86_64 && \
 rm "$outfile"
+
+# Go back to original directory
+cd -
