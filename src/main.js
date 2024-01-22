@@ -38,7 +38,7 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
-  // Open the DevTools.
+  // Open the DevTools at startup instead of requiring CTRL-ALT-i to be pressed:
   // mainWindow.webContents.openDevTools();
 
   // Allow iframe'ing lnbits
