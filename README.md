@@ -95,7 +95,7 @@ To run it as a webapp on http://localhost:8000/, do:
  
 `./serve_dev_website.sh`
 
-Note that HolePunch and the VNC client and server binaries don't work in the webapp.
+Note that the VNC client and server binaries don't work in the webapp, and neither does the HolePunch DHT.
 
 To get this working in a webbrowser as a webapp, it should be possible to integrate https://novnc.com/ as the VNC Client and use the HolePunch DHT websocket relay for connections.
 For the server-side, it might be possible to build a browser-based VNC server using https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/
