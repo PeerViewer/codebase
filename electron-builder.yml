@@ -1,0 +1,15 @@
+appId: "com.peerviewer.app"
+linux: { "category": "Network" }
+# only include .webpack, as that's enough:
+"files": [
+           ".webpack/**/*"
+	]
+# these are added to the package:
+"extraResources": [
+      {
+        "from": "vnc-software",
+        "to": "vnc-software",
+        "filter": ["**/*"]
+      }
+    ]
+

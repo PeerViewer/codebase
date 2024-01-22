@@ -1,0 +1,44 @@
+{
+  "name": "PeerViewer",
+  "productName": "PeerViewer",
+  "version": "1.1.0",
+  "description": "Peer-to-peer remote desktop and support solution, completely free for unlimited personal and commercial use.",
+  "homepage": "https://peerviewer.github.io/",
+  "main": ".webpack/main",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "Thomas Farstrike",
+    "email": "thomasverstreken@protonmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.1.0",
+    "@electron-forge/maker-deb": "^7.1.0",
+    "@electron-forge/maker-rpm": "^7.1.0",
+    "@electron-forge/maker-squirrel": "^7.1.0",
+    "@electron-forge/maker-zip": "^7.1.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.1.0",
+    "@electron-forge/plugin-webpack": "^7.1.0",
+    "@vercel/webpack-asset-relocator-loader": "^1.7.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "electron": "27.1.2",
+    "electron-builder": "^24.9.1",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.3.3"
+  },
+  "dependencies": {
+    "hyperdht": "^6.11.0",
+    "@hyper-cmd/lib-net": "https://github.com/holepunchto/hyper-cmd-lib-net#v0.0.8",
+    "@hyper-cmd/lib-keys": "https://github.com/holepunchto/hyper-cmd-lib-keys#v0.0.2",
+    "@hyper-cmd/lib-utils": "https://github.com/holepunchto/hyper-cmd-lib-utils#v0.0.2",
+    "electron-squirrel-startup": "^1.0.0"
+  }
+}
