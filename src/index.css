@@ -6,10 +6,10 @@ body {
 }
 
 header {
-    background-color: #0060a0;
+    background-color: #18222E;
     color: #fff;
     text-align: left;
-    padding: 0.4em 1em 0.2em 10em;
+    padding: 0.5em;
 }
 
 footer {
@@ -37,8 +37,7 @@ footer a:hover {
 }
 
 header .logo {
-    font-size: xx-large;
-    display: inline;
+    width: 25%;
 }
 
 header h1 {
