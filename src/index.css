@@ -68,6 +68,21 @@ label {
     font-weight: bold;
 }
 
+input[type=text] {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #a7c3ca;
+    font-family: GothamRndLight;
+    transition: border 0.4s ease-in-out;
+    width: 65%;
+}
+
+input:focus{
+    border:none;
+    outline:none;
+    border-bottom:2px solid #fff;
+}
+
 .main-content {
     display: none; /* by default, main-content is not visible until enable by the javascript menu - except content0 (see below) */
     flex-wrap: wrap;
@@ -121,7 +136,6 @@ label {
 
 #pubkey {
     margin-bottom: 1em;
-    font-size: 18px;
 }
 
 #serverhelptext {
