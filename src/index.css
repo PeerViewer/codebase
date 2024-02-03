@@ -14,9 +14,8 @@ header {
 
 footer {
     background-color: #18222E;
-    color: #fff;
+    color: #CAE2E9;
     text-align: center;
-    padding: 10px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -24,12 +23,13 @@ footer {
     padding: 0;
 }
 
-footer p {
-    margin: 0 0 0.5em 0;
+footer span {
+    position: relative;
+    top: -0.75em;
 }
 
 footer a {
-    color: #ffffff;
+    color: #CAE2E9;
     text-decoration: none;
 }
 footer a:hover {
@@ -163,11 +163,10 @@ header h1 {
     font-size: 1.2em;
 }
 
-.holepunchlogo {
+.pearslogo {
     position: relative;
-    width: 6em;
-    top: 0.3em;
-    left: 0.3em;
+    width: 3em;
+    top: 0.8em;
 }
 
 .donationqr {
