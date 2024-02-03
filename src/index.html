@@ -23,15 +23,14 @@
     <div class="container">
         <header>
 	   <img src="../images/logo_and_name.png" class="logo"/>
+           <div class="menu">
+               <div class="menuitem"><a href="#" class="menubutton menubuttonselected" onclick="menuChange(event,0)">Connect</a></div>
+               <div class="menuitem"><a href="#" class="menubutton" onclick="menuChange(event,1)">Features</a></div>
+               <div class="menuitem"><a href="#" class="menubutton" onclick="menuChange(event,5)">About</a></div>
+               <div class="menuitem"><a href="#" class="menubutton" onclick="menuChange(event,4)">Donate</a></div>
+               <div class="menuitem"><a href="#" class="menubutton" onclick="menuChange(event,2)">Contact</a></div>
+           </div>
         </header>
-        <div class="menu">
-            <div class="menuitem"><button class="menubutton menubuttonselected" onclick="menuChange(event,0)">Remote</button></div>
-            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,1)">More Features</button></div>
-            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,2)">Contact</button></div>
-            <!-- <div class="menuitem"><button class="menubutton" onclick="menuChange(event,3)">Tip Jar</button></div> -->
-            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,4)">Donate</button></div>
-            <div class="menuitem"><button class="menubutton" onclick="menuChange(event,5)">About</button></div>
-        </div>
         <div class="main-content" id="content0">
             <div class="coverremotecontrol">
                 <a href="https://github.com/PeerViewer/codebase/releases/" class="bluebutton downloadbutton"><div>Download PeerViewer to get started</div></a>

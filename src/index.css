@@ -13,7 +13,7 @@ header {
 }
 
 footer {
-    background-color: #0060a0;
+    background-color: #18222E;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -37,6 +37,7 @@ footer a:hover {
 }
 
 header .logo {
+    margin: 1em;
     width: 25%;
 }
 
@@ -68,41 +69,22 @@ header h1 {
 }
 
 .menu {
-    background-color: #e6e6e6;
-    float: left;
-    height: 21em;
-    width: 10em;
+    display: inline-block;
+    position: relative;
+    top: -1em;
 }
 
 .menuitem {
-    padding: 0.1em;
-    margin: 0.1em;
+    display: inline;
+    text-align: center;
 }
 
-.menuitem button {
-    background-color: #44aaff;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    text-align: left;
+.menuitem a {
+    color: #CAE2E9;
+    font-weight: bold;
     text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    width: 100%;
+    padding: 1em 2em 1em 2em;
 }
-
-.menubutton:hover {
-  background-color: #0060a0;
-  color: white;
-}
-
-/* this needs 2 classes, otherwise the .menubutton:hover above will win */
-.menubutton.menubuttonselected {
-  background-color: #0400b0;
-}
-
 
 #column1, #column2 {
     flex: 3;
