@@ -1,8 +1,25 @@
+@font-face {
+  font-family: GothamRndLight;
+  src: url(fonts/GothamRnd-Light.otf);
+}
+
+@font-face {
+  font-family: GothamRndMedium;
+  src: url(fonts/GothamRnd-Medium.otf);
+}
+
+/* Not used for now:
+@font-face {
+  font-family: GothamRndBold;
+  src: url(fonts/GothamRnd-Bold.otf);
+}
+*/
+
 body {
-    background: #f2f2f2;
+    background-color: #CAE2E9;
     color: #424242;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: GothamRndLight, sans-serif;
 }
 
 header {
@@ -41,8 +58,14 @@ header .logo {
     width: 25%;
 }
 
-header h1 {
-    display: inline;
+h2 {
+    margin-top: 0;
+    text-align: center;
+    font-family: GothamRndMedium;
+}
+
+label {
+    font-weight: bold;
 }
 
 .main-content {
@@ -57,10 +80,10 @@ header h1 {
 }
 
 .column {
-    flex: 1;
-    padding: 1em;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    flex: 1;
+    margin-top: 2em;
+    padding: 2em;
     position: relative;
 }
 
@@ -86,19 +109,24 @@ header h1 {
     padding: 1em 2em 1em 2em;
 }
 
+#column1 {
+    border-right: solid;
+}
+
+/* why?
 #column1, #column2 {
     flex: 3;
 }
+*/
 
 #pubkey {
     margin-bottom: 1em;
-    font-weight: bold;
     font-size: 18px;
 }
 
 #serverhelptext {
+    font-size: 14px;
     margin-bottom: 1em;
-    font-style: italic;
 }
 
 #serverstatus, #clientstatus {
@@ -111,22 +139,27 @@ header h1 {
 	left: 1em;
 }
 
-.bluebutton {
+.connectcontainer {
+    text-align: center;
+}
+
+.bigbutton {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #44aaff;
+    padding: 1.2em;
+    background-color: #18222E;
     color: #fff;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
     border: none;
-    border-radius: 4px;
+    border-radius: 0.5em;
     margin: 1em 0;
 }
 
-.bluebutton:hover {
-  background-color: #0060a0;
+.bigbutton:hover {
+  background-color: #000;
 }
 
 .feature {
@@ -159,10 +192,6 @@ header h1 {
     height: 2em;
 }
 
-#content1 .bluebutton {
-    font-size: 1.2em;
-}
-
 .pearslogo {
     position: relative;
     width: 3em;
@@ -187,7 +216,7 @@ header h1 {
     left: 10em;
 }
 
-.bluebutton.downloadbutton {
+.bigbutton.downloadbutton {
     border-radius: 35px;
     font-size: 32px;
     font-weight: bold;
@@ -197,7 +226,7 @@ header h1 {
     width: 70%;
     position: relative;
 }
-.bluebutton.downloadbutton:hover {
+.bigbutton.downloadbutton:hover {
     background-color: #0060a0;
     box-shadow: 0 0 60px #44aaff;
 }

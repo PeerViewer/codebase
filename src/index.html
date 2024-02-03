@@ -33,24 +33,26 @@
         </header>
         <div class="main-content" id="content0">
             <div class="coverremotecontrol">
-                <a href="https://github.com/PeerViewer/codebase/releases/" class="bluebutton downloadbutton"><div>Download PeerViewer to get started</div></a>
+                <a href="https://github.com/PeerViewer/codebase/releases/" class="bigbutton downloadbutton"><div>Download PeerViewer to get started</div></a>
             </div>
             <div class="column" id="column1">
                 <h2>Allow Remote Control</h2>
-                <label for="pubkey">YOUR ID:</label>
+                <label for="pubkey">Your ID</label>
                 <input type="text" name="pubkey" id="pubkey" disabled size="43">
                 <a href="#copy" onclick="javascript:copyYourId();"><img width="26" src="../images/copy-icon.png" class="copyicon"></a>
 		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
-		<!-- <button class="bluebutton" onclick="runServer()">Run Server</button> -->
+		<!-- <button class="bigbutton" onclick="runServer()">Run Server</button> -->
 		<div id="serverstatus">Initializing...</div>
             </div>
             <div class="column" id="column2">
                 <h2>Control Remote Computer</h2>
 		<p>
-                <label for="connectto">Partner ID:</label>
+                <label for="connectto">Partner ID</label>
                 <input type="text" id="connectto" name="connectto" size="43" onKeyPress="javascript:checkSubmit(event)"/>
 		</p>
-                <button class="bluebutton connectbutton" onclick="runClient()">CONNECT</button>
+		<div class="connectcontainer">
+			<button class="bigbutton" onclick="runClient()">Connect</button>
+		</div>
 		<div id="clientstatus">Ready to connect.</div>
             </div>
         </div>
@@ -63,7 +65,7 @@
 		<div id="featuregallery">
 		<!-- This gets filled up by JavaScript. -->
 		</div>
-		<button class="bluebutton" onClick="menuChange(event,3)">Feel free to request a different feature using the contact form</button>
+		<button class="bigbutton" onClick="menuChange(event,3)">Feel free to request a different feature using the contact form</button>
             </div>
 	</div>
         <div class="main-content" id="content2">
@@ -113,7 +115,7 @@
 			<li>Electron, for building standalone applications using open web standards.</li>
 			<li>Bitcoin and Lightning, for accepting payments without needing anyone's permission or approval.</li>
 		</ul>
-		<button class="bluebutton" onClick="menuChange(event,2)">If you like this project, or have suggestions, let us know!</button>
+		<button class="bigbutton" onClick="menuChange(event,2)">If you like this project, or have suggestions, let us know!</button>
 	    </div>
 	</div>
         <footer><span><a href="https://peerviewer.org" target="_blank">PeerViewer</a> © 2023 Built with<a href="https://pears.com/" target="_blank"><img class="pearslogo" src="../images/pears-logo.svg"></a></span></footer>
