@@ -173,6 +173,7 @@ input:focus{
 
 .bigbutton {
     display: inline-block;
+    float: left;
     padding: 1.2em;
     background-color: #18222E;
     color: #fff;
@@ -184,6 +185,10 @@ input:focus{
     border: none;
     border-radius: 0.5em;
     margin: 1em 0;
+}
+
+.connectbutton {
+    float: none;
 }
 
 .bigbutton:hover {
