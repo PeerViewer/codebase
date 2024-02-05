@@ -21,8 +21,12 @@ html {
 
 body {
     background-color: #CAE2E9;
-    color: #424242;
+    color: #18222E;
     margin: 0;
+}
+
+a {
+    color: #18222E;
 }
 
 header {
@@ -50,10 +54,6 @@ footer span {
 
 footer a {
     color: #CAE2E9;
-    text-decoration: none;
-}
-footer a:hover {
-    text-decoration: underline;
 }
 
 header .logo {
@@ -180,7 +180,7 @@ input:focus{
 }
 
 .bigbutton:hover {
-  background-color: #000;
+    background-color: #000;
 }
 
 .feature {
@@ -193,9 +193,6 @@ input:focus{
 .feature:hover {
     background-color: #0060a0;
     box-shadow: 0 0 60px #44aaff;
-}
-
-.feature p {
 }
 
 .feature img.qrcode {
@@ -219,7 +216,7 @@ img.headericon {
     top: 0.6em;
 }
 
-.donationqr {
+img.donate {
     width: 50%;
 }
 
@@ -278,3 +275,16 @@ img.headericon {
     padding: 0.5em 1em 0em 0;
 }
 
+#content4 {
+    height: 42em;
+    overflow-y: hidden;
+    padding: 2em 2em 0 2em;
+}
+
+#content4 img.donate {
+    width: 80%;
+}
+
+.twocolumns {
+    width: 50%;
+}
