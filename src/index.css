@@ -103,6 +103,7 @@ input:focus{
     justify-content: space-around;
     align-items: stretch;
     height: 21em;
+    padding: 2em 2em 0 2em;
 }
 #content0 {
     display: flex; /* content0 is the first menu item and visible by default */
@@ -111,12 +112,11 @@ input:focus{
 .column {
     box-sizing: border-box;
     flex: 1;
-    padding: 2em;
     position: relative;
 }
 
-.onecolumn {
-    padding: 1em;
+#column1, #column2 {
+    padding: 2em;
 }
 
 .menu {
