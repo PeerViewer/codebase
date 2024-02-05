@@ -15,11 +15,14 @@
 }
 */
 
+html {
+    font-family: GothamRndLight, sans-serif;
+}
+
 body {
     background-color: #CAE2E9;
     color: #424242;
     margin: 0;
-    font-family: GothamRndLight, sans-serif;
 }
 
 header {
@@ -58,10 +61,20 @@ header .logo {
     width: 25%;
 }
 
+h1 {
+    font-family: GothamRndMedium;
+    font-size: 42px;
+}
+
 h2 {
     margin-top: 0;
     text-align: center;
     font-family: GothamRndMedium;
+}
+
+.feature h3 {
+    font-family: GothamRndMedium;
+    margin: 0.1em;
 }
 
 label {
@@ -97,7 +110,6 @@ input:focus{
 .column {
     box-sizing: border-box;
     flex: 1;
-    margin-top: 2em;
     padding: 2em;
     position: relative;
 }
@@ -127,12 +139,6 @@ input:focus{
 #column1 {
     border-right: solid;
 }
-
-/* why?
-#column1, #column2 {
-    flex: 3;
-}
-*/
 
 #pubkey {
     margin-bottom: 1em;
@@ -177,15 +183,10 @@ input:focus{
 }
 
 .feature {
-    background: #44aaff;
-    border-radius: 10px;
-    color: #fff;
-    display: inline-grid;
-    height: 20em;
-    margin: 0.3em;
-    padding: 0.6em;
-    text-align: center;
-    width: 12em;
+    border-left: solid 2px #18222E;
+    display: inline-flex;
+    margin: 1em 0 1em 1em;
+    padding: 1em 0 0 2em;
 }
 
 .feature:hover {
@@ -194,17 +195,22 @@ input:focus{
 }
 
 .feature p {
-    height: 5em;
 }
 
-.feature img {
-    width: 80%;
+.feature img.qrcode {
+    width: 6em;
 }
 
-.feature h3 {
-    margin-block: 0;
-    height: 2em;
+.feature img.logo {
+    float: left;
+    padding-right: 0.75em;
+    width: 1.3em;
 }
+
+.featuredetail {
+    margin-left: 0.8em;
+}
+
 
 .pearslogo {
     position: relative;

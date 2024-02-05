@@ -59,15 +59,17 @@
             </div>
         </div>
         <div class="main-content" id="content1">
-	    <div class="onecolumn">
-	        <p>We'd love to know which feature to focus on next. What would you like to see? Now you can vote... with your wallet!</p>
-                <p>Just scan the QR code of the feature(s) you want with a Bitcoin Lightning wallet and send however much you like.</p>
-		<p>We're using this as an anti-spam mechanism, a way to weigh the votes, and a way to fund development.</p>
+	    <div class="column">
+	        <h1>We'd love to know which feature to focus on next.</h1>
+		<p>What would you like to see? Now you can vote... with your wallet!</p>
+                <p>Just scan the QR code of the feature(s) you want with a Bitcoin Lightning wallet and send however much you like. We're using this as an anti-spam mechanism, a way to weigh the votes, and a way to fund development.</p>
 		<p>The minimum amount is 1 satoshi, and the maximum is 10 Bitcoin. Every sat counts!</p>
+		<button class="bigbutton" onClick="menuChange(event,3)">Different feature? Request it now!</button>
+            </div>
+	    <div class="column">
 		<div id="featuregallery">
 		<!-- This gets filled up by JavaScript. -->
 		</div>
-		<button class="bigbutton" onClick="menuChange(event,3)">Feel free to request a different feature using the contact form</button>
             </div>
 	</div>
         <div class="main-content" id="content2">
@@ -164,13 +166,13 @@
     }
 
     function populateFeatureGallery() {
-      const features = [["Windows Support", "If you'd like to remote control Windows machines, or use a Windows machine for control, you need this!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ73NXX438JJCDQW26S"],
-                        ["MacOS Support", "If you'd like to remote control MacOS machines, or use an Apple for control, you need this!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ76R6GYMKVUC3WQLMU"],
-                        ["Integrated Bitcoin Lightning Wallet", "Allowing you 'stream' satoshis (for example: pay or get paid per minute) to provide remote support or share your computer.", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7C6G0P58S3C2C2P4Q"],
-                        ["View-Only Mode", "A View-Only mode might be nice to be able to share your desktop, without having the other party control it.", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7CFKDFUXXSGUDGTFU"]];
+      const features = [["Windows Support", "If you'd like to remote control Windows machines, or use a Windows machine for control, you need this!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ73NXX438JJCDQW26S","windows-logo"],
+                        ["MacOS Support", "If you'd like to remote control MacOS machines, or use an Apple for control, you need this!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ76R6GYMKVUC3WQLMU","macos-logo"],
+                        ["Integrated Bitcoin Lightning Wallet", "Allowing you 'stream' satoshis (for example: pay or get paid per minute) to provide remote support or share your computer.", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7C6G0P58S3C2C2P4Q", "bitcoin-logo"],
+                        ["View-Only Mode", "A View-Only mode might be nice to be able to share your desktop, without having the other party control it.", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7CFKDFUXXSGUDGTFU","viewonly-logo"]];
       let featuresHTML = "";
       for (let featurenr=0; featurenr<features.length; featurenr++) {
-        featuresHTML += '<div class="feature" id="feature' + featurenr + '"><h3>' + features[featurenr][0] + '</h3><p>' + features[featurenr][1] + '</p><a href="lightning:' + features[featurenr][2] + '"><img src="../images/' + features[featurenr][2] + '.png" alt="yes"/></a></div>';
+        featuresHTML += '<div class="feature" id="feature' + featurenr + '"><a href="lightning:' + features[featurenr][2] + '"><img class="qrcode" src="../images/' + features[featurenr][2] + '.png" alt="QR code that can be paid with bitcoin lightning wallet"/></a><div class="featuredetail"><img class="logo" src="../images/' + features[featurenr][3] + '.svg" alt="' + features[featurenr][3] + '"/><h3>' + features[featurenr][0] + '</h3><p>' + features[featurenr][1] + '</p></div></div>';
       }
       document.getElementById("featuregallery").innerHTML = featuresHTML;
     }
