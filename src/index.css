@@ -64,6 +64,7 @@ header .logo {
 h1 {
     font-family: GothamRndMedium;
     font-size: 42px;
+    margin: 0;
 }
 
 h2 {
@@ -72,7 +73,7 @@ h2 {
     font-family: GothamRndMedium;
 }
 
-.feature h3 {
+h3 {
     font-family: GothamRndMedium;
     margin: 0.1em;
 }
@@ -201,7 +202,7 @@ input:focus{
     width: 6em;
 }
 
-.feature img.logo {
+img.headericon {
     float: left;
     padding-right: 0.75em;
     width: 1.3em;
@@ -214,8 +215,8 @@ input:focus{
 
 .pearslogo {
     position: relative;
-    width: 3em;
-    top: 0.8em;
+    width: 2em;
+    top: 0.6em;
 }
 
 .donationqr {
@@ -266,3 +267,14 @@ input:focus{
     background-color: #ffffff7d;
     filter: invert(1);
 }
+
+.threecolumns {
+    float: left;
+    margin-top: 3em;
+    width: 33%;
+}
+
+.threecolumns p {
+    padding: 0.5em 1em 0em 0;
+}
+

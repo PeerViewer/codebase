@@ -92,33 +92,40 @@
 	</div>
         <div class="main-content" id="content5">
 	     <div class="onecolumn">
-		<p>PeerViewer <span id="peerviewerversion"></span> is a remote desktop and support solution, completely free for unlimited personal and commercial use.</p>
-		<p>Under the hood, it uses direct (peer-to-peer) connections between the participants.</p>
-		<p>This was recently made possible by the advanced holepunching techniques, made by the <a href="https://holepunch.to" target="_blank">HolePunch</a> company.</p>
+	        <h1>PeerViewer is a remote desktop and support solution, completely free for unlimited personal and commercial use.</h1>
+		Under the hood, it uses direct (peer-to-peer) connections between the participants. This was recently made possible by the power of the <a href="https://pears.com/" target="_blank"><img class="pearslogo" src="../images/pears-logo.svg" alt="Pear Runtime Logo"/>Pear Runtime</a>.
 		<!--
 		<h3>Why build an alternative to TeamViewer?</h3>
 		<p>TeamViewer works well and is very popular as a remote desktop and support program, but it's not free for commercial use.<p>
 		<p>Users report frequent disconnections, possibly due to TeamViewer monitoring the sessions and terminating them if they violate the terms of service.</p>
 		<p>We can do better.</p>
 		-->
-		<h3>Why peer-to-peer?</h3>
+		<div class="threecolumns column1">
+		<img class="headericon" src="../images/lightbulb.svg" alt="Lightbulb"/>
+		<h3>Why Peer-to-Peer?</h3>
 		<p>Traditionally, when you use network apps such as TeamViewer, place audio and video calls or share files, your data is going through intermediate servers which are expensive to host, can harm your privacy, increase latency and consume additional bandwidth.</p>
-		<p>Peer-to-peer solutions such as PeerViewer have the advantage of:
+		</div>
+		<div class="threecolumns column2">
+		<img class="headericon" src="../images/lightning.svg" alt="Lightning"/>
+		<h3>Advantages</h3>
 		<ul>
 			<li>Being the highest bandwidth AND lowest latency way of establishing a network connection.</li>
 			<li>Ensuring maximum privacy for all participants.</li>
 			<li>Being low cost, making it possible to survive on a pay-what-you-can/voluntary/donation basis.</li>
 			<li>Minimizing time-to-market and allowing for quick MVP's without a lot of server-side datacenter setup work.</li>
 		</ul>
+		</div>
+		<div class="threecolumns column3">
+		<img class="headericon" src="../images/wall.svg" alt="Wall"/>
 		<h3>Building blocks</h3>
-		<p>We're lucky to be standing on the shoulders of giants to pull this off.</p>
-		<p>Here's a list of some key, free and open-source technologies that make this possible:</p>
+		<p>We're lucky to be standing on the shoulders of giants to pull this off.<br/>Here's a list of some key, free and open-source technologies that make this possible:</p>
 		<ul>
 			<li>HolePunch, for establishing direct peer-to-peer connections.</li>
 			<li>LNBits, for quickly building reusable payment QR codes using the LNURLp standard.</li>
 			<li>Electron, for building standalone applications using open web standards.</li>
 			<li>Bitcoin and Lightning, for accepting payments without needing anyone's permission or approval.</li>
 		</ul>
+		</div>
 		<button class="bigbutton" onClick="menuChange(event,2)">If you like this project, or have suggestions, let us know!</button>
 	    </div>
 	</div>
@@ -172,7 +179,7 @@
                         ["View-Only Mode", "A View-Only mode might be nice to be able to share your desktop, without having the other party control it.", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7CFKDFUXXSGUDGTFU","viewonly-logo"]];
       let featuresHTML = "";
       for (let featurenr=0; featurenr<features.length; featurenr++) {
-        featuresHTML += '<div class="feature" id="feature' + featurenr + '"><a href="lightning:' + features[featurenr][2] + '"><img class="qrcode" src="../images/' + features[featurenr][2] + '.png" alt="QR code that can be paid with bitcoin lightning wallet"/></a><div class="featuredetail"><img class="logo" src="../images/' + features[featurenr][3] + '.svg" alt="' + features[featurenr][3] + '"/><h3>' + features[featurenr][0] + '</h3><p>' + features[featurenr][1] + '</p></div></div>';
+        featuresHTML += '<div class="feature" id="feature' + featurenr + '"><a href="lightning:' + features[featurenr][2] + '"><img class="qrcode" src="../images/' + features[featurenr][2] + '.png" alt="QR code that can be paid with bitcoin lightning wallet"/></a><div class="featuredetail"><img class="headericon" src="../images/' + features[featurenr][3] + '.svg" alt="' + features[featurenr][3] + '"/><h3>' + features[featurenr][0] + '</h3><p>' + features[featurenr][1] + '</p></div></div>';
       }
       document.getElementById("featuregallery").innerHTML = featuresHTML;
     }
