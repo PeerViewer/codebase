@@ -33,7 +33,7 @@ header {
     background-color: #18222E;
     color: #fff;
     text-align: left;
-    padding: 0.5em;
+    padding: 0 0 0.5em 0;
 }
 
 footer {
@@ -123,11 +123,13 @@ input:focus{
     display: inline-block;
     position: relative;
     top: -1em;
+    width: 70%; /* 100% - 25% - 5% safety margin */
 }
 
 .menuitem {
-    display: inline;
+    display: inline-block;
     text-align: center;
+    width: 23.75%; /* (100% - 5% margin) / 4 items */
 }
 
 .menuitem a {
@@ -181,6 +183,7 @@ input:focus{
 
 .bigbutton:hover {
     background-color: #000;
+    transition: all 0.2s linear;
 }
 
 .feature {
@@ -191,8 +194,9 @@ input:focus{
 }
 
 .feature:hover {
-    background-color: #0060a0;
-    box-shadow: 0 0 60px #44aaff;
+    box-shadow: 0 0 30px #18222e;
+    border-radius: 0 1em 1em 0;
+    transition: all 0.2s linear;
 }
 
 .feature img.qrcode {
@@ -245,8 +249,8 @@ img.donate {
     position: relative;
 }
 .bigbutton.downloadbutton:hover {
-    background-color: #0060a0;
-    box-shadow: 0 0 60px #44aaff;
+    background-color: #000000;
+    box-shadow: 0 0 30px #18222E;
 }
 .downloadbutton div {
     padding-top: 1.4em;
