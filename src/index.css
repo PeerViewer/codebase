@@ -88,7 +88,7 @@ input[type=text] {
     border-bottom: 2px solid #a7c3ca;
     font-family: GothamRndLight;
     transition: border 0.4s ease-in-out;
-    width: 65%;
+    width: 70%;
 }
 
 input:focus{
@@ -137,6 +137,11 @@ input:focus{
     font-weight: bold;
     text-decoration: none;
     padding: 1em 2em 1em 2em;
+}
+
+.menuitem a:hover {
+    color: #fff;
+    transition: all 0.2s linear;
 }
 
 #column1 {
