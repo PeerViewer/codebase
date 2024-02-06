@@ -309,15 +309,19 @@ img.donate {
 }
 
 #content4 {
-    height: 55em;
+    height: 60em;
     overflow-y: hidden;
     padding: 2em 2em 0 2em;
 }
 
+#content4 .column1 {
+    margin-left: 10%;
+}
+
 #content4 img.donate {
-    width: 80%;
+    width: 100%;
 }
 
 .twocolumns {
-    width: 50%;
+    width: 40%;
 }
