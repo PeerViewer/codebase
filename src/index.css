@@ -247,10 +247,6 @@ img.headericon {
     top: 0.6em;
 }
 
-img.donate {
-    width: 50%;
-}
-
 .contactticketform {
     border:none;
 }
@@ -262,7 +258,7 @@ img.donate {
     position: absolute;
     height: 40%;
     background-color: #333333b3;
-    left: 10em;
+    left: 0;
 }
 
 .bigbutton.downloadbutton {
@@ -270,7 +266,7 @@ img.donate {
     font-size: 32px;
     font-weight: bold;
     height: 4em;
-    left: 10%;
+    left: 15%;
     top: 20%;
     width: 70%;
     position: relative;
@@ -308,8 +304,12 @@ img.donate {
     text-align: left;
 }
 
+#content0 {
+    padding: 0;
+}
+
 #content4 {
-    height: 60em;
+    height: 35em;
     overflow-y: hidden;
     padding: 2em 2em 0 2em;
 }
@@ -319,7 +319,10 @@ img.donate {
 }
 
 #content4 img.donate {
-    width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 35%;
 }
 
 .twocolumns {
