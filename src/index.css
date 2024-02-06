@@ -29,12 +29,6 @@ a {
     color: #18222E;
 }
 
-header {
-    background-color: #18222E;
-    color: #fff;
-    text-align: left;
-    padding: 0 0 0.5em 0;
-}
 
 footer {
     background-color: #18222E;
@@ -54,11 +48,6 @@ footer span {
 
 footer a {
     color: #CAE2E9;
-}
-
-header .logo {
-    margin: 1em;
-    width: 25%;
 }
 
 h1 {
@@ -119,11 +108,24 @@ input:focus{
     padding: 2em;
 }
 
+/* header has: logo (25%) - menu (50%) - builtwith (20%) */
+header {
+    background-color: #18222E;
+    color: #fff;
+    text-align: left;
+    padding: 0 0 0.5em 0;
+}
+
+header .logo {
+    margin: 1em;
+    width: 25%;
+}
+
 .menu {
     display: inline-block;
     position: relative;
     top: -1em;
-    width: 70%; /* 100% - 25% - 5% safety margin */
+    width: 50%;
 }
 
 .menuitem {
@@ -142,6 +144,14 @@ input:focus{
 .menuitem a:hover {
     color: #fff;
     transition: all 0.2s linear;
+}
+
+.builtwith {
+    display: inline-block;
+    position: relative;
+    top: -1em;
+    text-align: right;
+    width: 20%;
 }
 
 #column1 {
