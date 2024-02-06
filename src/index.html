@@ -39,7 +39,7 @@
                 <h2>Allow Remote Control</h2>
 		<p>
                 <label for="pubkey">Your ID</label>
-                <input type="text" name="pubkey" id="pubkey" disabled size="43">
+                <input type="text" class="typetext" name="pubkey" id="pubkey" disabled size="43">
                 <a href="#copy" onclick="javascript:copyYourId();"><img width="16" src="../images/copy-icon.png" class="copyicon"></a>
 		</p>
 		<div id="serverhelptext">When you give your ID to someone running PeerViewer, they can operate your computer until you close this window.</div>
@@ -50,7 +50,7 @@
                 <h2>Control Remote Computer</h2>
 		<p>
                 <label for="connectto">Partner ID</label>
-                <input type="text" id="connectto" name="connectto" size="43" onKeyPress="javascript:checkSubmit(event)"/>
+                <input type="text" class="typetext" id="connectto" name="connectto" size="43" onKeyPress="javascript:checkSubmit(event)"/>
 		</p>
 		<div class="connectcontainer">
 			<button class="bigbutton connectbutton" onclick="runClient()">Connect</button>

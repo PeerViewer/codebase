@@ -71,7 +71,8 @@ label {
     font-weight: bold;
 }
 
-input[type=text] {
+/* input [type=text] doesnt work in AppImage?! */
+input.typetext {
     background: transparent;
     border: 0;
     border-bottom: 2px solid #a7c3ca;
