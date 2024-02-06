@@ -98,6 +98,10 @@ input:focus{
     display: flex; /* content0 is the first menu item and visible by default */
 }
 
+#content5 {
+    text-align: center;
+}
+
 .column {
     box-sizing: border-box;
     flex: 1;
@@ -183,7 +187,6 @@ header .logo {
 
 .bigbutton {
     display: inline-block;
-    float: left;
     padding: 1.2em;
     background-color: #18222E;
     color: #CAE2E9;
@@ -223,10 +226,14 @@ header .logo {
     width: 6em;
 }
 
-img.headericon {
+img.featureheadericon {
     float: left;
     padding-right: 0.75em;
     width: 1.3em;
+}
+
+img.headericon {
+    margin-bottom: 1em;
 }
 
 .featuredetail {
@@ -290,13 +297,15 @@ img.donate {
 }
 
 .threecolumns {
+    font-size: 15px;
     float: left;
-    margin-top: 3em;
-    width: 33%;
+    padding: 1em;
+    width: 30%;
 }
 
-.threecolumns p {
-    padding: 0.5em 1em 0em 0;
+.threecolumns div {
+    padding: 0.5em 1em 0em 1em;
+    text-align: left;
 }
 
 #content4 {
