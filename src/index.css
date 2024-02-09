@@ -329,7 +329,8 @@ img.headericon {
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 35%;
+    max-height: 100%;
+    max-width: 35%;
 }
 
 .twocolumns {
