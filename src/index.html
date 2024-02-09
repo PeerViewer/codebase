@@ -24,7 +24,7 @@
         <header>
 	   <a href="#" onclick="menuChange(event,6)"><img src="../images/logo_and_name.png" class="logo"/></a>
            <div class="menu">
-               <div class="menuitem"><a href="#" class="menubutton menubuttonselected" onclick="menuChange(event,0)">Connect</a></div>
+               <div class="menuitem"><a href="#" class="menubutton menubuttonselected" id="menubuttonconnect" style="display:none" onclick="menuChange(event,0)">Connect</a></div>
                <div class="menuitem"><a href="#" class="menubutton" onclick="menuChange(event,1)">Features</a></div>
                <div class="menuitem"><a href="#" class="menubutton" onclick="menuChange(event,5)">About</a></div>
                <div class="menuitem"><a href="#" class="menubutton" onclick="menuChange(event,4)">Contact&nbsp;and&nbsp;Donate</a></div>
@@ -43,7 +43,7 @@
 	</div>
         <div class="main-content" id="content0">
             <div class="coverremotecontrol">
-                <a href="https://github.com/PeerViewer/codebase/releases/" class="bigbutton downloadbutton"><div>Download PeerViewer to get started</div></a>
+                <a href="https://github.com/PeerViewer/codebase/releases/" class="bigbutton downloadbutton"><div>Download PeerViewer to connect</div></a>
             </div>
             <div class="column" id="column1">
                 <h2>Allow Remote Control</h2>
@@ -163,6 +163,8 @@
       try {
         const process = require('node:process');
         console.log(process.platform);
+        let menubuttonconnect = document.getElementById("menubuttonconnect")
+        if (menubuttonconnect) menubuttonconnect.style.display = "inline";
         runServer(); // run server automatically at startup
 	/*
         const electronVersion = process.versions.electron;

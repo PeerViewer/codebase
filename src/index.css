@@ -319,6 +319,12 @@ img.headericon {
     margin-left: 10%;
 }
 
+#content6 img.laptop {
+    position: absolute;
+    right: 10%;
+    bottom: 0;
+    width: 55%;
+}
 #content4 img.donate {
     position: absolute;
     right: 0;
