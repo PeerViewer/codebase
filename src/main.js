@@ -215,7 +215,7 @@ function findAndRunProcess(binaryName, args) {
     console.log("Binary " + binaryName + " not found.");
     return -2;
   }
-  return runProcess(foundBinary);
+  return runProcess(foundBinary, args);
 }
 
 function runProcess(foundBinary, args) {
