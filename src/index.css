@@ -130,33 +130,24 @@ header .logo {
     display: inline-block;
     position: relative;
     top: -1em;
-    width: 50%;
+    width: 71%; /* 100% - 4% margin - 25% logo */
 }
 
 .menuitem {
     display: inline-block;
     text-align: center;
-    width: 23.75%; /* (100% - 5% margin) / 4 items */
+    padding-left: 4%;
 }
 
 .menuitem a {
     color: #CAE2E9;
     font-weight: bold;
     text-decoration: none;
-    padding: 1em 2em 1em 2em;
 }
 
 .menuitem a:hover {
     color: #fff;
     transition: all 0.2s linear;
-}
-
-.builtwith {
-    display: inline-block;
-    position: relative;
-    top: -1em;
-    text-align: right;
-    width: 20%;
 }
 
 #column1 {
@@ -244,22 +235,14 @@ img.headericon {
 
 .pearslogo {
     position: relative;
-    width: 2em;
+    width: 2.5em;
     top: 0.6em;
 }
 
-.contactticketform {
-    border:none;
-}
-
-.coverremotecontrol {
-    display: none;
-    z-index: 1;
-    width: 100%;
-    position: absolute;
-    height: 40%;
-    background-color: #333333b3;
-    left: 0;
+.githublogo {
+    position: relative;
+    width: 2em;
+    top: 0.3em;
 }
 
 .bigbutton.downloadbutton {
@@ -334,5 +317,5 @@ img.headericon {
 }
 
 .twocolumns {
-    width: 40%;
+    width: 45%;
 }
