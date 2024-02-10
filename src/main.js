@@ -6,8 +6,10 @@
 // - do some kind of "pkill vnc-software/tigervnc-linux-x86_64/usr/bin/x0vncserver -rfbport=55900" to ensure none other is still running
 // - do some kind of "pkill vnc-software/tigervnc-linux-x86_64/usr/bin/vncviewer SecurityTypes=None 127.0.0.1::45900" to ensure none other is still running
 // - before starting a new client or server process, check if serverChild or clientChild are initialized and if yes, stop them
+// - support (a list of) multiple running clientChilds instead of just one
 
 const { app, BrowserWindow, ipcMain, shell } = require('electron');
+const nodePath = require('node:path');
 import { existsSync } from 'node:fs';
 
 let serverChild;
@@ -101,14 +103,17 @@ function stopChild(child) {
 // Search order:
 // - vnc-software/ (when launching in development)
 // - /tmp/.mount_peervizdlxvC/resources/vnc-software/ (launched from appimage or .deb package installation)
+// - on windows: check console.log to know what __dirname and process.cwd() are
 function findResourceFile(filename) {
+	console.log("findResourceFile __dirname = ");
 	console.log(__dirname)
+	console.log("findResourceFile process.cwd = ");
 	console.log(process.cwd())
-	const magicName = "vnc-software/";
-	const parts = __dirname.split('/');
-	let appImageMount = parts.slice(0, -3).join('/'); // /tmp/.mount_peervizdlxvC/resources/app.asar/.webpack/main becomes /tmp/.mount_peervizdlxvC/resources
+	const magicName = "vnc-software" + nodePath.sep;
+	const parts = __dirname.split(nodePath.sep);
+	let appImageMount = parts.slice(0, -3).join(nodePath.sep); // /tmp/.mount_peervizdlxvC/resources/app.asar/.webpack/main becomes /tmp/.mount_peervizdlxvC/resources
 	// placesToCheck are directories that should end with a slash
-	let placesToCheck = [magicName, appImageMount + "/" + magicName, "/"];
+	let placesToCheck = [magicName, appImageMount + nodePath.sep + magicName, nodePath.sep];
 	for (const str of placesToCheck) {
 		let fullName = str + filename;
 		console.log("checking exists: " + str);
@@ -122,6 +127,13 @@ function findResourceFile(filename) {
 }
 
 ipcMain.on('run-server', (event) => {
+  // Make sure this OS is supported
+  if (process.platform !== 'linux' && process.platform !== 'win32') {
+    let error = 'Unsupported platform ' + process.platform + '. Only linux and win32 are supported, darwin (MacOS) not yet. Please reach out!';
+    console.log(error);
+    event.reply(error);
+    return -1;
+  }
   if (!serverChild) { // Only run the server if not started already. It keeps running the whole time.
     event.reply('run-server-log', "Initializing network layer...");
     publicKeyServer = startHyperTeleServer();
@@ -130,14 +142,36 @@ ipcMain.on('run-server', (event) => {
     event.reply('run-server-log', "Network layer initialized.");
 
     event.reply('run-server-log', "Preparing for incoming connections...");
-    // default debian package has x0tigervncserver instead
-    serverChild = runProcess('tigervnc-linux-x86_64/usr/bin/x0vncserver', ['SecurityTypes=None','-localhost=1','-interface=127.0.0.1','-rfbport=55900']);
+    if (process.platform === 'linux') {
+      let binaryName = 'tigervnc-linux-x86_64/usr/bin/x0vncserver';
+      let foundBinary = findResourceFile(binaryName);
+      if (!foundBinary) {
+        console.log("Binary " + binaryName + " not found.");
+        return -2;
+      }
+      let dirname = nodePath.dirname(foundBinary);
+      serverChild = runProcess(foundBinary, ['SecurityTypes=VncAuth','localhost=1','interface=127.0.0.1','rfbport=55900','PasswordFile='+dirname+nodePath.sep+'plain.bin']);
+    } else if (process.platform === 'win32') {
+      serverChild = findAndRunProcess('vnc-software\\uvnc-windows\\x64\\winvnc.exe'); // uses the config file next to the binary
+    }
+    if (!serverChild) {
+      event.reply('run-server-log', "ERROR: Listening for connections using VNC server failed.");
+      return;
+    }
   }
   event.reply('run-server-pubkey', publicKeyServer);
   event.reply('run-server-log', "Ready for incoming connections.");
 });
 
 ipcMain.on('run-client', (event, data) => {
+  // Make sure this OS is supported
+  if (process.platform !== 'linux' && process.platform !== 'win32') {
+    let error = 'Unsupported platform ' + process.platform + '. Only linux and win32 are supported, darwin (MacOS) not yet. Please reach out!';
+    console.log(error);
+    event.reply(error);
+    return -1;
+  }
+
   event.reply('run-client-log', "Initializing network layer...");
   console.log("running client with connectto data: " + data);
   let hyperTeleProxy = startHyperTeleClient(data);
@@ -148,10 +182,21 @@ ipcMain.on('run-client', (event, data) => {
   event.reply('run-client-log', "Network layer initialized.");
 
   event.reply('run-client-log', "Establishing outgoing connection...");
-  // default debian package has xtigervncviewer instead
-  let clientChild = runProcess('tigervnc-linux-x86_64/usr/bin/vncviewer', ['SecurityTypes=None','127.0.0.1::45900']);
+  if (process.platform === 'linux') {
+    let binaryName = 'tigervnc-linux-x86_64/usr/bin/vncviewer';
+    let foundBinary = findResourceFile(binaryName);
+    if (!foundBinary) {
+      console.log("Binary " + binaryName + " not found.");
+      return -2;
+    }
+    // PasswordFile of TigerVNC viewer cannot be passed on commandline, so use the file next to the binary.
+    let dirname = nodePath.dirname(foundBinary);
+    clientChild = runProcess(foundBinary, ['SecurityTypes=VncAuth','PasswordFile='+dirname+nodePath.sep+'plain.bin','127.0.0.1::45900']);
+  } else if (process.platform === 'win32') {
+    clientChild = findAndrunProcess('vnc-software\\uvnc-windows\\x64\\vncviewer.exe', ['/password nopassword','localhost:45900']);
+  }
   if (!clientChild) {
-    event.reply('run-client-log', "Outgoing connection using vncviewer failed.");
+    event.reply('run-client-log', "ERROR: Outgoing connection using vncviewer failed.");
     return;
   }
   // Stop the hyperTeleProxy from listening when the client is closed, because the next run might use a different client
@@ -164,18 +209,16 @@ ipcMain.on('run-client', (event, data) => {
   event.reply('run-client-log', "Outgoing connection established.");
 });
 
-function runProcess(binaryName, args) {
-  if (process.platform !== 'linux') { // win32/darwin not supported
-    console.log('Unsupported platform ' + process.platform + '. Only linux is supported, win32/darwin not yet. Please reach out!');
-    return -1;
-  }
-
+function findAndRunProcess(binaryName, args) {
   let foundBinary = findResourceFile(binaryName);
   if (!foundBinary) {
     console.log("Binary " + binaryName + " not found.");
     return -2;
   }
+  return runProcess(foundBinary);
+}
 
+function runProcess(foundBinary, args) {
   const { spawn } = require('child_process');
   const child = spawn(foundBinary, args);
   return child;

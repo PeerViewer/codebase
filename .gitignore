@@ -97,6 +97,7 @@ dist/
 
 # external resources
 vnc-software/tigervnc-linux-x86_64
+vnc-software/uvnc-windows
 
 # trashcan
 trash/
