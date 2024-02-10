@@ -152,7 +152,7 @@ ipcMain.on('run-server', (event) => {
       let dirname = nodePath.dirname(foundBinary);
       serverChild = runProcess(foundBinary, ['SecurityTypes=VncAuth','localhost=1','interface=127.0.0.1','rfbport=55900','PasswordFile='+dirname+nodePath.sep+'plain.bin']);
     } else if (process.platform === 'win32') {
-      serverChild = findAndRunProcess('vnc-software\\uvnc-windows\\x64\\winvnc.exe'); // uses the config file next to the binary
+      serverChild = findAndRunProcess('uvnc-windows\\x64\\winvnc.exe'); // uses the config file next to the binary
     }
     if (!serverChild) {
       event.reply('run-server-log', "ERROR: Listening for connections using VNC server failed.");
@@ -193,7 +193,7 @@ ipcMain.on('run-client', (event, data) => {
     let dirname = nodePath.dirname(foundBinary);
     clientChild = runProcess(foundBinary, ['SecurityTypes=VncAuth','PasswordFile='+dirname+nodePath.sep+'plain.bin','127.0.0.1::45900']);
   } else if (process.platform === 'win32') {
-    clientChild = findAndrunProcess('vnc-software\\uvnc-windows\\x64\\vncviewer.exe', ['/password nopassword','localhost:45900']);
+    clientChild = findAndrunProcess('uvnc-windows\\x64\\vncviewer.exe', ['/password nopassword','localhost:45900']);
   }
   if (!clientChild) {
     event.reply('run-client-log', "ERROR: Outgoing connection using vncviewer failed.");
