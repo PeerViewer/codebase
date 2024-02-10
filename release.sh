@@ -28,7 +28,11 @@ echo "4) Running: electron-forge package"
 
 # NOTE: Don't use prepackage because the electron-builder will not add the tigervnc/ folder:
 #./node_modules/.bin/electron-builder --prepackaged  out/peerviewer-linux-x64/ -l appimage
-echo "5) Running electron-builder -l appimage zip deb snap rpm"
+echo "5) Running electron-builder --linux appimage zip deb snap rpm"
 export DEBUG=electron-builder
-./node_modules/.bin/electron-builder -l appimage zip deb snap rpm
+./node_modules/.bin/electron-builder --linux appimage zip deb snap rpm 
 
+echo "6) Running electron-builder --win"
+# This requires wine32, see https://www.electron.build/multi-platform-build so something like:
+# dpkg --add-architecture i386 && apt-get update && apt-get install wine32
+./node_modules/.bin/electron-builder --win
