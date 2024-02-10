@@ -1,5 +1,5 @@
 #!/bin/sh
-# This script needs: readlink, dirname, wget, sha256sum, unzip
+# This script needs: readlink, dirname, curl, sha256sum, unzip
 
 # Execute with containing directory as current working directory
 mydir=$(readlink -f "$0")
@@ -12,7 +12,7 @@ outdir=uvnc-windows
 downloadlink="https://uvnc.com/component/jdownloads/send/0-/470-ultravnc-1-4-6-zip.html"
 sha256sum=3afe90cf4f287ff066649225223d9950221ddfd273e5f4805c2f6fde39a5df83
 
-wget "$downloadlink" -O "$outfile"
+curl "$downloadlink" > "$outfile"
 result=$?
 
 if [ $result -eq 0 ]; then
