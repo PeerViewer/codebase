@@ -193,7 +193,7 @@ ipcMain.on('run-client', (event, data) => {
     let dirname = nodePath.dirname(foundBinary);
     clientChild = runProcess(foundBinary, ['SecurityTypes=VncAuth','PasswordFile='+dirname+nodePath.sep+'plain.bin','127.0.0.1::45900']);
   } else if (process.platform === 'win32') {
-    clientChild = findAndRunProcess('uvnc-windows\\x64\\vncviewer.exe', ['/password nopassword','localhost:45900']);
+    clientChild = findAndRunProcess('uvnc-windows\\x64\\vncviewer.exe', ['/password','nopassword','localhost:45900']);
   }
   if (!clientChild) {
     event.reply('run-client-log', "ERROR: Outgoing connection using vncviewer failed.");
