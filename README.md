@@ -100,3 +100,9 @@ Note that the VNC client and server binaries don't work in the webapp, and neith
 To get this working in a webbrowser as a webapp, it should be possible to integrate https://novnc.com/ as the VNC Client and use the HolePunch DHT websocket relay for connections.
 For the server-side, it might be possible to build a browser-based VNC server using https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/
 
+# Windows
+
+Install git for Windows with those many handy Linux and Bash commands.
+Install https://github.com/nodists/nodist/releases
+
+$ nodist 16.17.1 # newer versions might also work
