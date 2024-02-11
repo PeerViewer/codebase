@@ -1,5 +1,7 @@
 appId: "com.peerviewer.app"
 linux: { "category": "Network" }
+msi: { "oneClick": "false" }
+nsis: { "oneClick": "false", "allowToChangeInstallationDirectory": "true"}
 # only include .webpack, as that's enough:
 "files": [
            ".webpack/**/*"
