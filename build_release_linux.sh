@@ -14,10 +14,11 @@ echo "2) make sure you've incremented the version number in package.json AND pac
 read yes
 
 echo "3) Cleaning up old build..."
-rm -rf .webpack/
-rm -rf dist/
+rm -rf .webpack
+rm -rf dist
+rm -rf out
 # Don't include Windows VNC binaries on Linux
-rm -rf vnc-software/uvnc-windows/
+rm -rf vnc-software/uvnc-windows
 
 # If you run it in dev mode first with:
 # npm run start

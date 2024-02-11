@@ -17,10 +17,11 @@ echo "2) make sure you've incremented the version number in package.json AND pac
 read yes
 
 echo "3) Cleaning up old build..."
-rm -rf .webpack/
-rm -rf dist/
+rm -rf .webpack
+rm -rf dist
+rm -rf out
 # dont include linux binaries in Windows build
-rm -rf vnc-software/tigervnc-linux-x86_64/
+rm -rf vnc-software/tigervnc-linux-x86_64
 
 # first make sure the correct files are packaged with electron-forge:
 echo "4) Packaging with: electron-forge package"
