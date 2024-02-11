@@ -22,6 +22,10 @@ rm -rf dist
 rm -rf out
 # dont include linux binaries in Windows build
 rm -rf vnc-software/tigervnc-linux-x86_64
+if [ ! -d "vnc-software/uvnc-windows" ]; then
+	echo "vnc-software/uvnc-windows not found, running vnc-software/download_uvnc.sh"
+	./vnc-software/download_uvnc.sh
+fi
 
 # first make sure the correct files are packaged with electron-forge:
 echo "4) Packaging with: electron-forge package"

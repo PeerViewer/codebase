@@ -19,6 +19,11 @@ rm -rf dist
 rm -rf out
 # Don't include Windows VNC binaries on Linux
 rm -rf vnc-software/uvnc-windows
+if [ ! -d "vnc-software/tigervnc-linux-x86_64" ]; then
+        echo "vnc-software/tigervnc-linux-x86_64 not found, running vnc-software/download_tigervnc.sh"
+        ./vnc-software/download_tigervnc.sh
+fi
+
 
 # If you run it in dev mode first with:
 # npm run start
