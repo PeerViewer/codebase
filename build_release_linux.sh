@@ -10,7 +10,7 @@ fi
 echo "1) make sure devtools are set to false in src/main.js"
 read yes
 
-echo "2) make sure you've incremented the version number in package.json"
+echo "2) make sure you've incremented the version number in package.json AND package-lock.json"
 read yes
 
 echo "3) Cleaning up old build..."
