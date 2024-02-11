@@ -16,6 +16,8 @@ read yes
 echo "3) Cleaning up old build..."
 rm -rf .webpack/
 rm -rf dist/
+# Don't include Windows VNC binaries on Linux
+rm -rf vnc-software/uvnc-windows/
 
 # If you run it in dev mode first with:
 # npm run start
@@ -23,25 +25,12 @@ rm -rf dist/
 #./node_modules/.bin/electron-builder
 
 # Therefore, first make sure the correct files are packaged with electron-forge:
-echo "4) Running: electron-forge package"
-./node_modules/.bin/electron-forge package
+echo "4) Packaging with: electron-forge package -p linux -a x64"
+./node_modules/.bin/electron-forge package -p linux -a x64
 
 # NOTE: Don't use prepackage because the electron-builder will not add the tigervnc/ folder:
 #./node_modules/.bin/electron-builder --prepackaged  out/peerviewer-linux-x64/ -l appimage
-echo "5) Running electron-builder --linux appimage zip deb snap rpm"
+echo "5) Building release binaries with: electron-builder --linux appimage deb snap rpm tar.gz"
 export DEBUG=electron-builder
 ./node_modules/.bin/electron-builder --linux appimage deb snap rpm tar.gz
-
-# Building for Windows on Linux doesn't seem to work, see:
-# https://github.com/electron/electron/issues/1075
-# https://github.com/electron-userland/electron-builder/issues/844
-# https://github.com/electron-userland/electron-builder/issues/5254
-#
-# It also requires wine32, see https://www.electron.build/multi-platform-build so something like:
-# dpkg --add-architecture i386 && apt-get update && apt-get install wine32
-#./node_modules/.bin/electron-builder --win nsis portable msi zip
-#
-# To build for Windows, execute on a Windows machine (as Administrator, otherwise symlink permission errors):
-# node_modules\\.bin\\electron-builder --win nsis portable msi zip
-
 
