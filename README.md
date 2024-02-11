@@ -50,7 +50,7 @@ On Linux:
 
 `./vnc-software/download_tigervnc.sh`
 
-On Windows:
+On Windows (using Bash for Windows, see below):
 
 `./vnc-software/download_uvnc.sh`
 
@@ -86,5 +86,5 @@ Development can also be done on Windows, and it's also required to build release
 
 Just install node and npm, for example using https://github.com/nodists/nodist/releases
 
-And it's also recommdned to install Git For Windows to have bash and many more handy commandline tools that are used by the .sh scripts in this project.
+And it's also recommended to install Git For Windows to have Bash and many more handy commandline tools that are used by the .sh scripts in this project.
 
