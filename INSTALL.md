@@ -6,9 +6,9 @@ In the instructions below, x.y.z is the version number you want to install.
 
 Download and install one of the Windows builds:
 
-- **PeerViewer Setup x.y.z.exe** is a regular assisted installer that creates shortcuts, allows you to choose the installation directory, etc.
-- **PeerViewer x.y.z.msi** is a Microsoft Windows Installer with additional commandline options (add /? for help) to support automated deployments and advanced usage.
-- **PeerViewer x.y.z.exe** is a portable executable - it works out of the box, without installation steps. You'll have to create your own shortcut if you want one.
+- **PeerViewer.Setup.x.y.z.exe** is a regular assisted installer that creates shortcuts, allows you to choose the installation directory, etc.
+- **PeerViewer.x.y.z.msi** is a Microsoft Windows Installer with additional commandline options (add /? for help) to support automated deployments and advanced usage.
+- **PeerViewer.x.y.z.exe** is a portable executable - it works out of the box, without installation steps. You'll have to create your own shortcut if you want one.
 - **PeerViewer-x.y.z-win.zip** is an archive file that can be extracted to a manually created folder for do-it-yourself installations, including creating your own shortcut.
 
 # Linux
@@ -36,11 +36,11 @@ To install the dependencies for the Redhat/Fedora/OpenSuse/CentOS .rpm package, 
 
 `sudo yum install at-spi2-core gtk3 libnotify libuuid nss xdg-utils`
 
-And then install the PeerViewer_x.y.z_amd64.rpm file by double-clicking it or running something like:
+And then install the PeerViewer_x.y.z_x86_64.rpm file by double-clicking it or running something like:
 
-`sudo rpm -i PeerViewer_x.y.z_amd64.rpm`
+`sudo rpm -i PeerViewer_x.y.z_x86_64.rpm`
 
 ## Snap package
 
-The .snap package is untested as of yet but it should just work. If you're into snap, try it out and give some feedback!
+The PeerViewer_x.y.z_amd64.snap package is untested as of yet but it should just work. If you're into snap, try it out and give some feedback!
 
