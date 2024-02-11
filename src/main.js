@@ -191,7 +191,7 @@ ipcMain.on('run-client', (event, data) => {
     }
     // PasswordFile of TigerVNC viewer cannot be passed on commandline, so use the file next to the binary.
     let dirname = nodePath.dirname(foundBinary);
-    clientChild = runProcess(foundBinary, ['SecurityTypes=VncAuth','PasswordFile='+dirname+nodePath.sep+'plain.bin','127.0.0.1::45900']);
+    clientChild = runProcess(foundBinary, ['SecurityTypes=VncAuth','EmulateMiddleButton=1','DotWhenNoCursor=1','PasswordFile='+dirname+nodePath.sep+'plain.bin','127.0.0.1::45900']);
   } else if (process.platform === 'win32') {
     clientChild = findAndRunProcess('uvnc-windows\\x64\\vncviewer.exe', ['/password','nopassword','localhost:45900']);
   }
