@@ -6,6 +6,8 @@ Under the hood, it uses direct (peer-to-peer) connections between the participan
 
 This was recently made possible by the advanced holepunching techniques, made by the HolePunch company.
 
+![Screenshot of PeerViewer v1.2.0](https://peerviewer.org/images/v1.2.0_connect_1350x677.png)
+
 # Why peer-to-peer?
 
 Traditionally, when you use network apps such as TeamViewer, place audio and video calls or share files, your data is going through intermediate servers which are expensive to host, can harm your privacy, increase latency and consume additional bandwidth.
