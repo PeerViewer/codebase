@@ -67,6 +67,7 @@ You can enable Chrome Developer Tools by setting "devTools: true" in src/main.js
 To build a release, have a look at the interactive scripts:
 
 `./build_release_linux.sh # only tested on a Linux machine`
+
 `./build_release_windows.sh # needs to be done on a Windows machine, more info in the script itself`
 
 ## Run as webapp
