@@ -16,7 +16,8 @@ Peer-to-peer solutions such as PeerViewer have the advantage of:
 - Ensuring maximum privacy for all participants.
 - Being low cost, making it possible to survive on a pay-what-you-can/voluntary/donation basis.
 - Minimizing time-to-market and allowing for quick MVP's without a lot of server-side datacenter setup work.
-- Building blocks
+
+**Building blocks**
 
 We're lucky to be standing on the shoulders of giants to pull this off.
 
@@ -29,39 +30,11 @@ Here's a list of some key, free and open-source technologies that make this poss
 
 # Installation instructions
 
-## All-in-one bundles
-
-The .AppImage and .zip releases are all-in-one bundles that don't require any dependency installation.
-
-- Use the .AppImage if you want an all-in-one portable file that just works when you make it executable and start it.
-- Same for the .zip; just extract it where you like and double-click the "peerviewer" file.
-- If you use the AppImage or the .zip, you need to create your own shortcut on the desktop or in the start menu, if you want one.
-
-## Debian/Ubuntu
-
-To install the dependencies for the Debian/Ubuntu Linux .deb package, you may need to run or install something like:
-
-`sudo apt install libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0 libuuid1 libsecret-1-0 libsecret-common libnspr4`
-
-And then install the PeerViewer_version_amd64.deb file by double-clicking it or running something like:
-
-`sudo dpkg -i PeerViewer_version_amd64.deb`
-
-## Redhat/Fedora/OpenSuse/CentOS
-
-To install the dependencies for the Redhat/Fedora/OpenSuse/CentOS .rpm package, you may need to run something like (untested):
-
-`sudo yum install at-spi2-core gtk3 libnotify libuuid nss xdg-utils`
-
-And then install the PeerViewer_version_amd64.rpm file by double-clicking it or running something like:
-
-`sudo rpm -i PeerViewer_version_amd64.deb`
-
-## Snap package
-
-The .snap package is untested as of yet but it should just work. If you're into snap, try it out and give some feedback!
+See INSTALL.md
 
 # Development
+
+Tested with node v16.17.1 and npm v8.15.0 but should work with more recent versions too.
 
 ## Install dependencies
 
@@ -71,9 +44,15 @@ To install the dependencies from package.json using the specific version from pa
 
 ## Download and extract TigerVNC
 
-Before starting the app, first make sure you have downloaded and extracted the TigerVNC software:
+Before starting the app, first make sure you have downloaded and extracted the VNC software.
+
+On Linux:
 
 `./vnc-software/download_tigervnc.sh`
+
+On Windows:
+
+`./vnc-software/download_uvnc.sh`
 
 ## Start the app
 
@@ -85,9 +64,10 @@ You can enable Chrome Developer Tools by setting "devTools: true" in src/main.js
 
 ## Build a release
 
-To build a release, have a look at the interactive script:
+To build a release, have a look at the interactive scripts:
 
-`./release.sh`
+`./build_release_linux.sh # only tested on a Linux machine`
+`./build_release_windows.sh # needs to be done on a Windows machine, more info in the script itself`
 
 ## Run as webapp
 
@@ -100,9 +80,11 @@ Note that the VNC client and server binaries don't work in the webapp, and neith
 To get this working in a webbrowser as a webapp, it should be possible to integrate https://novnc.com/ as the VNC Client and use the HolePunch DHT websocket relay for connections.
 For the server-side, it might be possible to build a browser-based VNC server using https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/
 
-# Windows
+## Windows
 
-Install git for Windows with those many handy Linux and Bash commands.
-Install https://github.com/nodists/nodist/releases
+Development can also be done on Windows, and it's also required to build releases for Windows.
 
-$ nodist 16.17.1 # newer versions might also work
+Just install node and npm, for example using https://github.com/nodists/nodist/releases
+
+And it's also recommdned to install Git For Windows to have bash and many more handy commandline tools that are used by the .sh scripts in this project.
+
