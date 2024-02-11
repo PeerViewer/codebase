@@ -1,3 +1,7 @@
+v1.3.0 - Opening Windows
+======
+- Add support for Microsoft Windows
+
 v1.2.0 - Complete Makeover
 ======
 - Complete restyling with new logo, new colors, improved look-and-feel.
