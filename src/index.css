@@ -60,6 +60,11 @@ h1 {
     margin: 0;
 }
 
+h1.about {
+    /* smaller, otherwise it doesnt fit */
+    font-size: 42px;
+}
+
 h2 {
     margin-top: 0;
     text-align: center;
@@ -198,7 +203,6 @@ header .logo {
     cursor: pointer;
     border: none;
     border-radius: 0.5em;
-    margin: 1em 0;
 }
 
 .connectbutton {
@@ -289,7 +293,7 @@ img.headericon {
 .threecolumns {
     font-size: 15px;
     float: left;
-    padding: 1em;
+    padding: 1em 1em 0 1em;
     width: 30%;
 }
 
