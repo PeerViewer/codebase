@@ -113,29 +113,24 @@ input:focus{
     padding: 2em;
 }
 
-/* header has: logo (25%) - menu (50%) - builtwith (20%) */
 header {
     background-color: #18222E;
     color: #fff;
     text-align: left;
-    padding: 0 0 0.5em 0;
+    padding: 1em;
 }
 
 header .logo {
-    margin: 1em;
-    width: 25%;
+    width: 15%;
 }
 
 .menu {
-    display: inline-block;
-    position: relative;
-    top: -1em;
-    width: 71%; /* 100% - 4% margin - 25% logo */
+    float: right;
+    width: 40%;
 }
 
 .menuitem {
-    display: inline-block;
-    text-align: center;
+    float: right;
     padding-left: 4%;
 }
 
