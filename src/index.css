@@ -108,6 +108,9 @@ input:focus{
 #content4 .innermain-content {
     width: 70%;
 }
+#content6 .innermain-content {
+    width: 45%;
+}
 .main-content {
     display: none; /* by default, main-content is not visible until enable by the javascript menu - except content0 (see below) */
     flex-wrap: wrap;
@@ -320,7 +323,10 @@ img.headericon {
 
 #content6 img.laptop {
     position: absolute;
-    width: 55%;
+    right: 2%;
+    bottom: 10%;
+    max-width: 60%;
+    max-height: 60%;
 }
 
 #content4 img.donate {
