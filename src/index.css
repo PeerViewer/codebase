@@ -56,7 +56,7 @@ footer .footerright {
 
 h1 {
     font-family: GothamRndMedium;
-    font-size: 42px;
+    font-size: 62px;
     margin: 0;
 }
 
@@ -94,10 +94,11 @@ input:focus{
 .main-content {
     display: none; /* by default, main-content is not visible until enable by the javascript menu - except content0 (see below) */
     flex-wrap: wrap;
-    justify-content: space-around;
     align-items: stretch;
-    height: 21em;
-    padding: 2em 2em 0 2em;
+    margin-left: 1em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 #content0 {
     display: flex; /* content0 is the first menu item and visible by default */
@@ -169,8 +170,15 @@ header .logo {
 	border: solid 1px;
 	padding: 1em;
 	position: absolute;
-	bottom: 1em;
+	bottom: 0em;
 	right: 1em;
+}
+
+#serverstatus {
+	left: 0em;
+}
+
+#clientstatus {
 	left: 1em;
 }
 
@@ -195,6 +203,7 @@ header .logo {
 
 .connectbutton {
     float: none;
+    margin: 1em 0 3em;
 }
 
 .bigbutton:hover {
@@ -293,22 +302,12 @@ img.headericon {
     padding: 0;
 }
 
-#content4 {
-    height: 35em;
-    overflow-y: hidden;
-    padding: 2em 2em 0 2em;
-}
-
-#content4 .column1 {
-    margin-left: 10%;
-}
-
 #content6 img.laptop {
     position: absolute;
-    right: 10%;
-    bottom: 0;
+    top: 20%;
     width: 55%;
 }
+
 #content4 img.donate {
     position: absolute;
     right: 0;
