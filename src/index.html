@@ -78,8 +78,8 @@
 		</div>
             </div>
 	</div>
-        <div class="main-content" id="content4">
-	     <div class="twocolumns column1">
+        <div class="outermain-content" id="content4">
+	     <div class="onecolumn innermain-content">
 		<h1>As you know, writing and maintaining quality software is not cheap...</h1>
 		<p>We are aiming to keep this project well-maintained, bug-free, and reliable long-term.</p>
 		<p>Therefore, your generous donations are always appreciated.</p>
@@ -93,7 +93,7 @@
 	</div>
         <div class="main-content" id="content5">
 	     <div class="onecolumn">
-	        <h1 class="about">PeerViewer is a remote desktop and support solution, completely free for unlimited personal and commercial use.</h1>
+	        <h1 class="about" id="h1about">PeerViewer is a remote desktop and support solution, completely free for unlimited personal and commercial use.</h1>
 		<p>
 		Under the hood, it uses direct (peer-to-peer) connections between the participants. This was recently made possible by the power of the <a href="https://pears.com/" target="_blank"><img class="pearslogo" src="../images/pears-logo.svg" alt="Pear Runtime Logo"/>Pear Runtime</a>.</p>
 		<!--
@@ -147,6 +147,8 @@
     <script>
     function adaptForWeb() {
       menuChange(null,6);
+      let h1about = document.getElementById("h1about")
+      if (h1about) h1about.style.fontSize = "62px";
     }
     function startup() {
       try {

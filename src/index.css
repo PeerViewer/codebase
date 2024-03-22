@@ -96,6 +96,18 @@ input:focus{
     border-bottom:2px solid #fff;
 }
 
+.outermain-content {
+    display: none; /* by default, main-content is not visible until enable by the javascript menu - except content0 (see below) */
+}
+.innermain-content {
+    margin-left: 1em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#content4 .innermain-content {
+    width: 70%;
+}
 .main-content {
     display: none; /* by default, main-content is not visible until enable by the javascript menu - except content0 (see below) */
     flex-wrap: wrap;
@@ -308,7 +320,6 @@ img.headericon {
 
 #content6 img.laptop {
     position: absolute;
-    top: 20%;
     width: 55%;
 }
 
