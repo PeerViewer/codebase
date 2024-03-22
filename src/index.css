@@ -38,16 +38,20 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 0;
 }
 
-footer span {
-    position: relative;
-    top: -0.75em;
+footer .footerleft {
+    float: left;
+    margin: 0 0 0.75em 1em;
 }
 
 footer a {
     color: #CAE2E9;
+}
+
+footer .footerright {
+    margin: 0.5em 1em 0 0;
+    float: right;
 }
 
 h1 {
@@ -116,21 +120,23 @@ input:focus{
 header {
     background-color: #18222E;
     color: #fff;
+    height: 1.75em;
     text-align: left;
     padding: 1em;
 }
 
 header .logo {
-    width: 15%;
+    float: left;
+    width: 13em;
 }
 
 .menu {
-    float: right;
-    width: 40%;
+    text-align: right;
 }
 
 .menuitem {
-    float: right;
+    display: inline-block;
+    font-size: 18px;
     padding-left: 4%;
 }
 
@@ -307,7 +313,7 @@ img.headericon {
     position: absolute;
     right: 0;
     bottom: 0;
-    max-height: 100%;
+    max-height: 75%;
     max-width: 35%;
 }
 
