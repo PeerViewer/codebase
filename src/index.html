@@ -88,7 +88,7 @@
 		<p>Thank you!</p>
 	    </div>
 	     <div>
-		<a href="lightning:LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7DN8GUE4WCGS0D0DN"><img src="../images/donate-phone.png" class="donate"/></a>
+		<a href="lightning:LNURL1DP68GURN8GHJ7ER9D4HJUMRWWP5KWEME9E3K7MF0D3H82UNVWQHNVN2Y2D95ULP9MGQ"><img src="../images/donate-phone.png" class="donate"/></a>
 	    </div>
 	</div>
         <div class="main-content" id="content5">
@@ -188,9 +188,9 @@
     }
 
     function populateFeatureGallery() {
-      const features = [["MacOS Support", "If you'd like to remote control MacOS machines, or use an Apple for control, you need this!", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ76R6GYMKVUC3WQLMU","macos-logo"],
-                        ["Integrated Bitcoin Lightning Wallet", "Allowing you 'stream' satoshis (for example: pay or get paid per minute) to provide remote support or share your computer.", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7C6G0P58S3C2C2P4Q", "bitcoin-logo"],
-                        ["View-Only Mode", "A View-Only mode might be nice to be able to share your desktop, without having the other party control it.", "LNURL1DP68GURN8GHJ7MR9VAJKUEPWD3HXY6T5WVHXXMMD9AKXUATJD3CZ7CFKDFUXXSGUDGTFU","viewonly-logo"]];
+      const features = [["MacOS Support", "If you'd like to remote control MacOS machines, or use an Apple for control, you need this!", "LNURL1DP68GURN8GHJ7ER9D4HJUMRWWP5KWEME9E3K7MF0D3H82UNVWQHKK7N9V4JKG82AFR6","macos-logo"],
+                        ["Integrated Bitcoin Lightning Wallet", "Allowing you 'stream' satoshis (for example: pay or get paid per minute) to provide remote support or share your computer.", "LNURL1DP68GURN8GHJ7ER9D4HJUMRWWP5KWEME9E3K7MF0D3H82UNVWQHKZKJP234KJANA6MQ", "bitcoin-logo"],
+                        ["View-Only Mode", "A View-Only mode might be nice to be able to share your desktop, without having the other party control it.", "LNURL1DP68GURN8GHJ7ER9D4HJUMRWWP5KWEME9E3K7MF0D3H82UNVWQH55M3H2PX4WYCUQ4G","viewonly-logo"]];
       let featuresHTML = "";
       for (let featurenr=0; featurenr<features.length; featurenr++) {
         featuresHTML += '<div class="feature" id="feature' + featurenr + '"><a href="lightning:' + features[featurenr][2] + '"><img class="qrcode" src="../images/' + features[featurenr][2] + '.png" alt="QR code that can be paid with bitcoin lightning wallet"/></a><div class="featuredetail"><img class="featureheadericon" src="../images/' + features[featurenr][3] + '.svg" alt="' + features[featurenr][3] + '"/><h3>' + features[featurenr][0] + '</h3><p>' + features[featurenr][1] + '</p></div></div>';
