@@ -23,8 +23,8 @@ rm -rf out
 # dont include linux binaries in Windows build
 rm -rf vnc-software/tigervnc-linux-x86_64
 if [ ! -d "vnc-software/uvnc-windows" ]; then
-	echo "vnc-software/uvnc-windows not found, running vnc-software/download_uvnc.sh"
-	./vnc-software/download_uvnc.sh
+	echo "vnc-software/uvnc-windows not found, running vnc-software/download_generic.sh"
+	./vnc-software/download_generic.sh "uvnc-windows.zip" "uvnc-windows" "https://uvnc.com/component/jdownloads/send/0-/470-ultravnc-1-4-6-zip.html" "3afe90cf4f287ff066649225223d9950221ddfd273e5f4805c2f6fde39a5df83" "ultravnc.conf" "uvnc-windows/x64/UltraVNC.ini"
 fi
 
 # first make sure the correct files are packaged with electron-forge:

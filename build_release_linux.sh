@@ -20,8 +20,13 @@ rm -rf out
 # Don't include Windows VNC binaries on Linux
 rm -rf vnc-software/uvnc-windows
 if [ ! -d "vnc-software/tigervnc-linux-x86_64" ]; then
-        echo "vnc-software/tigervnc-linux-x86_64 not found, running vnc-software/download_tigervnc.sh"
-        ./vnc-software/download_tigervnc.sh
+        echo "vnc-software/tigervnc-linux-x86_64 not found, running vnc-software/download_generic.sh"
+        ./vnc-software/download_generic.sh "tigervnc-latest-stable.tar.gz" "tigervnc-linux-x86_64" "https://netix.dl.sourceforge.net/project/tigervnc/stable/1.13.1/tigervnc-1.13.1.x86_64.tar.gz" "d643316760fb34cb610b843b8af75e19f16eae34acf8e55cae088c4f7adf083f" "tigervnc.conf" "tigervnc-linux-x86_64/usr/bin/plain.bin"
+	downloadresult=$?
+	if [ $downloadresult -ne 0 ]; then
+		echo "Download of VNC client returned error: $downloadresult"
+		exit 1
+	fi
 fi
 
 
