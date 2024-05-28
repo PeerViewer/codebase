@@ -8,7 +8,10 @@ if [ $diff -gt 0 ]; then
 fi
 
 echo "1) make sure devtools are set to false in src/main.js"
-read yes
+if grep "devTools: true" src/main.js; then
+	echo "devTools: true found in src/main.js"
+	exit 2
+fi
 
 echo "2) make sure you've incremented the version number in package.json AND package-lock.json"
 read yes
