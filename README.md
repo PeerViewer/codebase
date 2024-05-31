@@ -60,7 +60,7 @@ On Windows (using Bash for Windows, see below):
 
 To start the PeerViewer standalone Electron app, do:
 
-`npm run # which runs the "start" script from package.json`
+`npm start # which runs the "start" script from package.json`
 
 You can enable Chrome Developer Tools by setting "devTools: true" in src/main.js and then pressing CTRL-SHIFT-i in the app.
 
