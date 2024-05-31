@@ -98,6 +98,8 @@ dist/
 # external resources
 vnc-software/tigervnc-linux-x86_64
 vnc-software/uvnc-windows
+vnc-software/macVNC.app/
+vnc-software/tigervnc-macos-x86_64/
 
 # trashcan
 trash/

@@ -128,8 +128,8 @@ function findResourceFile(filename) {
 
 ipcMain.on('run-server', (event) => {
   // Make sure this OS is supported
-  if (process.platform !== 'linux' && process.platform !== 'win32') {
-    let error = 'Unsupported platform ' + process.platform + '. Only linux and win32 are supported, darwin (MacOS) not yet. Please reach out!';
+  if (process.platform !== 'linux' && process.platform !== 'win32' && process.platform != 'darwin') {
+    let error = 'Unsupported platform ' + process.platform + '. Only Linux, Windows and MacOS are supported, yours not yet. Please reach out!';
     console.log(error);
     event.reply(error);
     return -1;
@@ -153,6 +153,8 @@ ipcMain.on('run-server', (event) => {
       serverChild = runProcess(foundBinary, ['SecurityTypes=VncAuth','localhost=1','interface=127.0.0.1','rfbport=55900','PasswordFile='+dirname+nodePath.sep+'plain.bin']);
     } else if (process.platform === 'win32') {
       serverChild = findAndRunProcess('uvnc-windows\\x64\\winvnc.exe'); // uses the config file next to the binary
+    } else if (process.platform === 'darwin') {
+      serverChild = findAndRunProcess('macVNC.app/Contents/MacOS/macVNC', ['-rfbport','55900','-passwd','nopassword']);
     }
     if (!serverChild) {
       event.reply('run-server-log', "ERROR: Listening for connections using VNC server failed.");
@@ -165,8 +167,8 @@ ipcMain.on('run-server', (event) => {
 
 ipcMain.on('run-client', (event, data) => {
   // Make sure this OS is supported
-  if (process.platform !== 'linux' && process.platform !== 'win32') {
-    let error = 'Unsupported platform ' + process.platform + '. Only linux and win32 are supported, darwin (MacOS) not yet. Please reach out!';
+  if (process.platform !== 'linux' && process.platform !== 'win32' && process.platform != 'darwin') {
+    let error = 'Unsupported platform ' + process.platform + '. Only Linux, Windows and MacOS are supported, yours not yet. Please reach out!';
     console.log(error);
     event.reply(error);
     return -1;
@@ -182,12 +184,23 @@ ipcMain.on('run-client', (event, data) => {
   event.reply('run-client-log', "Network layer initialized.");
 
   event.reply('run-client-log', "Establishing outgoing connection...");
-  if (process.platform === 'linux') {
+  if (process.platform === 'linux' || process.platform === 'darwin') {
     let binaryName = 'tigervnc-linux-x86_64/usr/bin/vncviewer';
-    let foundBinary = findResourceFile(binaryName);
-    if (!foundBinary) {
-      console.log("Binary " + binaryName + " not found.");
-      return -2;
+    let foundBinary = '';
+    if (process.platform === 'linux') {
+      let binaryName = 'tigervnc-linux-x86_64/usr/bin/vncviewer';
+      foundBinary = findResourceFile(binaryName);
+      if (!foundBinary) {
+        console.log("Binary " + binaryName + " not found.");
+        return -2;
+      }
+    } else if (process.platform === 'darwin') {
+      let binaryName = 'tigervnc-macos-x86_64/Contents/MacOS/TigerVNC\ Viewer';
+      foundBinary = findResourceFile(binaryName);
+      if (!foundBinary) {
+        console.log("Binary " + binaryName + " not found.");
+        return -2;
+      }
     }
     // PasswordFile of TigerVNC viewer cannot be passed on commandline, so use the file next to the binary.
     let dirname = nodePath.dirname(foundBinary);

@@ -1,5 +1,8 @@
 #!/bin/sh -x
-# This script needs: readlink, dirname, curl, sha256sum, unzip, tar
+# This script needs: readlink, dirname, curl, shasum, unzip, tar
+# On windows: unzip
+# On linux: tar
+# On macos: hdiutil
 
 outfile="$1"
 outdir="$2"
@@ -19,7 +22,7 @@ mydir=$(dirname "$mydir")
 cd "$mydir"
 
 
-curl "$downloadlink" > "$outfile"
+curl -L "$downloadlink" > "$outfile"
 result=$?
 
 if [ $result -eq 0 ]; then
@@ -27,7 +30,7 @@ if [ $result -eq 0 ]; then
 	# make sure outdir is gone so it will be replaced entierly
 	rm -rf "$outdir"
 
-	echo "$shasum  $outfile" | sha256sum -c -
+	echo "$shasum  $outfile" | shasum -a 256 -c -
 	sharesult=$?
 	if [ "$sharesult" -eq 0 ]; then
 		if echo "$outfile" | grep "\.zip"; then
@@ -37,6 +40,12 @@ if [ $result -eq 0 ]; then
 				echo "ERROR: unzip failed!"
 				exit 3
 			fi
+		elif echo "$outfile" | grep "\.dmg"; then
+			echo "Extracting .dmg file"
+			mountpoint=/Volumes/tigervnc-for-peerviewer-build
+			hdiutil attach -mountpoint "$mountpoint" "$outfile"
+			cp -R "$mountpoint"/TigerVNC*.app tigervnc-macos-x86_64/
+			hdiutil detach "$mountpoint"
 		else # assume it's a tar
 			if tar xf "$outfile"; then
 				mv tigervnc-1.13.1.x86_64 tigervnc-linux-x86_64
@@ -48,7 +57,11 @@ if [ $result -eq 0 ]; then
 		fi
 		configfiledstdir=$(dirname "$configfiledst")
 		if [ -f "$configfilesrc" -a -d "$configfiledstdir" ]; then
-			cat "$configfilesrc" | sed  -e 's/\r*$/\r/' > "$configfiledst"
+			# the windows build requires removing \r so the line endings are only \n
+			#cat "$configfilesrc" | sed  -e 's/\r*$/\r/' > "$configfiledst"
+			#cat "$configfilesrc" | tr -d '\r' > "$configfiledst"
+			# Disabled the \r removal because the password file happens to contain a \r
+			cp "$configfilesrc" "$configfiledst"
 		else
 			echo "ERROR: could not write config file because $configfilesrc is not a file or $configfiledstdir is not a directory!"
 			exit 5
